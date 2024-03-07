@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import GoodsItem from './GoodsItem';
+import './GoodsItem.css'
 
 function App() {
+    const [goods, setGoods] = useState([]);
+
     useEffect(() => {
         const headers = new Headers();
         headers.append('Authorization', 'Bearer');
 
-        fetch('http://localhost:8080/goods/all', {
-            method : 'GET',
-            headers : headers
+        fetch('http://localhost:8080/goods/random-goods', {
+            method: 'GET',
+            headers: headers
         })
             .then(response => {
                 if (!response.ok) {
@@ -18,31 +20,27 @@ function App() {
                 return response.json();
             })
             .then(data => {
-                console.log('Відповідь від контролера:', data);
+                console.log('Response : ', data);
+                setGoods(data);
             })
             .catch(error => {
-                console.error('Помилка отримання даних від контролера:', error.message);
+                console.error('ERROR : ', error.message);
             });
     }, []);
 
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
+                <h1>AirGear</h1>
             </header>
+            <div className="goods-list">
+                {goods.map(item => (
+                    <GoodsItem key={item.id} item={item} />
+                ))}
+            </div>
         </div>
     );
 }
 
 export default App;
+
