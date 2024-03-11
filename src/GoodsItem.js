@@ -1,6 +1,4 @@
-import React from 'react';
-
-function GoodsItem({ item }) {
+export default function GoodsItem({ item }) {
     return (
         <div className="goods-item">
             <h2>{item.name}</h2>
@@ -11,5 +9,3 @@ function GoodsItem({ item }) {
         </div>
     );
 }
-
-export default GoodsItem;

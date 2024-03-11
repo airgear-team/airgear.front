@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import GoodsItem from './GoodsItem';
 import './GoodsItem.css'
 
@@ -7,7 +7,8 @@ function App() {
 
     useEffect(() => {
         const headers = new Headers();
-        headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvbmx5dXNlcjEiLCJyb2xlcyI6IlJPTEVfVVNFUiIsImlhdCI6MTcxMDE4NDE3NSwiZXhwIjoxNzEwMjAyMTc1fQ.Mt6RULl6MF54Elxhb2UCMygLgG_lOsiHbeZ_GTx0X6I');
+        const myToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5dXJpaSIsInJvbGVzIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzEwMTg5Mzk0LCJleHAiOjE3MTAyMDczOTR9.H4e4Q5lrn2aFCO1jsB91_TlqeTzYglaaY60XA7b5X6E'
+        headers.append('Authorization', `Bearer ${myToken}`);
         headers.append('Content-Type', 'application/json');
 
         const body = JSON.stringify({
@@ -15,9 +16,9 @@ function App() {
             "description": "This is a sample item description",
             "price": 100.50,
             "weekendsPrice": 120.00,
-            "location" : {
-                "regionId" : 4,
-                "settlement" : "ваваів"
+            "location": {
+                "regionId": 4,
+                "settlement": "ваваів"
             },
             "deposit": {
                 "amount": 50.00,
@@ -26,7 +27,7 @@ function App() {
             "user": {
                 "id": 1
             },
-            "category" : {
+            "category": {
                 "id": 1
             },
             "phoneNumber": "+380987654321"
@@ -44,13 +45,14 @@ function App() {
                 return response.json();
             })
             .then(data => {
-                console.log('Response : ', data);
-                setGoods(data);
+                // console.log('Response : ', data);
+                setGoods(prevGoods => [...prevGoods, data]);
             })
             .catch(error => {
                 console.error('ERROR : ', error.message);
             });
     }, []);
+
 
     return (
         <div className="App">
@@ -58,13 +60,12 @@ function App() {
                 <h1>AirGear</h1>
             </header>
             <div className="goods-list">
-                {/*{goods.map(item => (*/}
-                {/*    <GoodsItem key={item.id} item={item} />*/}
-                {/*))}*/}
+                {goods.map(item =>
+                    <GoodsItem key={item.id} item={item}/>
+                )}
             </div>
         </div>
     );
 }
 
 export default App;
-
