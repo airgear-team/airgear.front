@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/Navbar.css'
 import React from "react";
 
-export default function Navbar() {
+export default function Navbar({ onSignUpClick }) {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -19,10 +20,15 @@ export default function Navbar() {
                     </ul>
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        <button className="btn btn-primary" type="submit">Search</button>
                     </form>
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <span className="sign-up nav-link active" aria-current="page" onClick={onSignUpClick}>Sign up</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
-    )
+    );
 }
