@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import GoodsItem from './GoodsItem';
-import './GoodsItem.css'
+import GoodsItem from './components/GoodsItem';
+import './components/css/GoodsItem.css'
 
 function App() {
     const [goods, setGoods] = useState([]);
