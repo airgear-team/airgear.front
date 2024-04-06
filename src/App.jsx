@@ -1,11 +1,9 @@
 import './App.scss'
+import ProductList from "./components/ProductList/ProductList";
 
 function App() {
-
 	return (
-		<div className='container'>
-			<h1>Test</h1>
-		</div>
+		<ProductList/>
 	)
 }
 
