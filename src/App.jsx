@@ -1,11 +1,17 @@
 import './App.scss'
-import ProductList from "./components/ProductList/ProductList";
-import CounterComponent from "./components/CounterComponent.jsx";
+import ImagesUploadForm from "./components/ImagesUploadForm/ImagesUploadForm.jsx";
+import ProductList from "./components/ProductList/ProductList.jsx";
+import ProductCard from "./components/ProductCard/ProductCard.jsx";
+
+
 
 function App() {
-	return (
-		<CounterComponent/>
-	)
+    return (
+        <div>
+            <ImagesUploadForm/>
+            <ProductList/>
+        </div>
+    )
 }
 
 export default App
