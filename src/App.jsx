@@ -1,11 +1,21 @@
 import './App.scss'
-import ProductList from "./components/ProductList/ProductList";
-import CounterComponent from "./components/CounterComponent.jsx";
+import Header from "./components/Header/Header.jsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import SearchingForm from "./components/SearchingForm/SearchingForm.jsx";
+
 
 function App() {
-	return (
-		<CounterComponent/>
-	)
+    return (
+        <BrowserRouter>
+            <Routes>
+
+            </Routes>
+
+            <Header/>
+            <SearchingForm/>
+            {/*/!*<ProductList/>*!/ Исправить*/}
+        </BrowserRouter>
+    )
 }
 
 export default App
