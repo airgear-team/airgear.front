@@ -1,16 +1,20 @@
 import './App.scss'
-import ImagesUploadForm from "./components/ImagesUploadForm/ImagesUploadForm.jsx";
-import ProductList from "./components/ProductList/ProductList.jsx";
-import ProductCard from "./components/ProductCard/ProductCard.jsx";
-
+import Header from "./components/Header/Header.jsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import SearchingForm from "./components/SearchingForm/SearchingForm.jsx";
 
 
 function App() {
     return (
-        <div>
-            <ImagesUploadForm/>
-            <ProductList/>
-        </div>
+        <BrowserRouter>
+            <Routes>
+
+            </Routes>
+
+            <Header/>
+            <SearchingForm/>
+            {/*/!*<ProductList/>*!/ Исправить*/}
+        </BrowserRouter>
     )
 }
 
