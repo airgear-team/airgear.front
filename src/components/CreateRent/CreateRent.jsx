@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import style from './CreateRent.module.scss';
+import Header from "../Header/Header.jsx";
 
 export default function CreateRent() {
     const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ export default function CreateRent() {
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         const [mainKey, subKey] = name.split('.');
         if (subKey) {
             setFormData({
@@ -40,7 +41,7 @@ export default function CreateRent() {
                 }
             });
         } else {
-            setFormData({ ...formData, [name]: value });
+            setFormData({...formData, [name]: value});
         }
     };
 
@@ -66,47 +67,65 @@ export default function CreateRent() {
     };
 
     return (
-        <div className={style.createRent}>
-            <h2>Create Rent</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-                <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
-                <input type="number" name="price.priceAmount" placeholder="Price Amount" value={formData.price.priceAmount} onChange={handleChange} required />
-                <select name="price.priceCurrency" value={formData.price.priceCurrency} onChange={handleChange} required>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                </select>
-                <select name="price.priceType" value={formData.price.priceType} onChange={handleChange} required>
-                    <option value="NEGOTIATED_PRICE">Negotiated</option>
-                    <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
-                </select>
-                <input type="number" name="weekendsPrice.weekendsPriceAmount" placeholder="Weekends Price Amount" value={formData.weekendsPrice.weekendsPriceAmount} onChange={handleChange} required />
-                <select name="weekendsPrice.weekendsPriceCurrency" value={formData.weekendsPrice.weekendsPriceCurrency} onChange={handleChange} required>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                </select>
-                <select name="weekendsPrice.weekendsPriceType" value={formData.weekendsPrice.weekendsPriceType} onChange={handleChange} required>
-                    <option value="NEGOTIATED_PRICE">Negotiated</option>
-                    <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
-                </select>
-                <input type="number" name="deposit.depositAmount" placeholder="Deposit Amount" value={formData.deposit.depositAmount} onChange={handleChange} required />
-                <select name="deposit.depositCurrency" value={formData.deposit.depositCurrency} onChange={handleChange} required>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                </select>
-                <select name="deposit.depositPriceType" value={formData.deposit.depositPriceType} onChange={handleChange} required>
-                    <option value="NEGOTIATED_PRICE">Negotiated</option>
-                    <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
-                </select>
-                <input type="number" name="locationId" placeholder="Location ID" value={formData.locationId} onChange={handleChange} required />
-                <input type="number" name="category.id" placeholder="Category ID" value={formData.category.id} onChange={handleChange} required />
-                <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
-                <select name="goodsCondition" value={formData.goodsCondition} onChange={handleChange} required>
-                    <option value="NEW">New</option>
-                    <option value="USED">Used</option>
-                </select>
-                <button type="submit">Create</button>
-            </form>
+        <div>
+            <div>
+                <div><Header/></div>
+            </div>
+            <div className={style.createRent}>
+                <h2>Create Rent</h2>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange}
+                           required/>
+                    <textarea name="description" placeholder="Description" value={formData.description}
+                              onChange={handleChange} required/>
+                    <input type="number" name="price.priceAmount" placeholder="Price Amount"
+                           value={formData.price.priceAmount} onChange={handleChange} required/>
+                    <select name="price.priceCurrency" value={formData.price.priceCurrency} onChange={handleChange}
+                            required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    <select name="price.priceType" value={formData.price.priceType} onChange={handleChange} required>
+                        <option value="NEGOTIATED_PRICE">Negotiated</option>
+                        <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
+                    </select>
+                    <input type="number" name="weekendsPrice.weekendsPriceAmount" placeholder="Weekends Price Amount"
+                           value={formData.weekendsPrice.weekendsPriceAmount} onChange={handleChange} required/>
+                    <select name="weekendsPrice.weekendsPriceCurrency"
+                            value={formData.weekendsPrice.weekendsPriceCurrency} onChange={handleChange} required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    <select name="weekendsPrice.weekendsPriceType" value={formData.weekendsPrice.weekendsPriceType}
+                            onChange={handleChange} required>
+                        <option value="NEGOTIATED_PRICE">Negotiated</option>
+                        <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
+                    </select>
+                    <input type="number" name="deposit.depositAmount" placeholder="Deposit Amount"
+                           value={formData.deposit.depositAmount} onChange={handleChange} required/>
+                    <select name="deposit.depositCurrency" value={formData.deposit.depositCurrency}
+                            onChange={handleChange} required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    <select name="deposit.depositPriceType" value={formData.deposit.depositPriceType}
+                            onChange={handleChange} required>
+                        <option value="NEGOTIATED_PRICE">Negotiated</option>
+                        <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
+                    </select>
+                    <input type="number" name="locationId" placeholder="Location ID" value={formData.locationId}
+                           onChange={handleChange} required/>
+                    <input type="number" name="category.id" placeholder="Category ID" value={formData.category.id}
+                           onChange={handleChange} required/>
+                    <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber}
+                           onChange={handleChange} required/>
+                    <select name="goodsCondition" value={formData.goodsCondition} onChange={handleChange} required>
+                        <option value="NEW">New</option>
+                        <option value="USED">Used</option>
+                    </select>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
         </div>
     );
 }
