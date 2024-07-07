@@ -52,15 +52,13 @@ export default function Header() {
     return (
         <header className={style.header}>
             <div className={style.logo}>
-                <a href="/">AirGear</a>
+                <a href="/">AIRGEAR</a>
             </div>
-            <div className={style.search}>
-                <input type="text" placeholder="Search..." />
-            </div>
+
             <div className={style.auth}>
                 {isLoggedIn ? (
                     <>
-                        <button onClick={handleCreateRentClick}>Create Rent</button>
+                        <button onClick={handleCreateRentClick}>Add Ad</button>
                         <button onClick={handleProfileClick}>Profile</button>
                         <button onClick={handleLogoutClick}>Logout</button>
                     </>

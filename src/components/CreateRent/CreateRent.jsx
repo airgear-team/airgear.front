@@ -72,7 +72,6 @@ export default function CreateRent() {
                 <div><Header/></div>
             </div>
             <div className={style.createRent}>
-                <h2>Create Rent</h2>
                 <form onSubmit={handleSubmit}>
                     <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange}
                            required/>
