@@ -1,13 +1,17 @@
 import React from 'react';
-import LikeIcon from "../../assets/images/icons/Magnifying-glass.svg?react";
+import MagnifyingIcon from "../../assets/images/icons/Magnifying-glass.svg?react";
+import LocationIcon from "../../assets/images/icons/Location-point.svg?react";
 import styles from './SearchFrom.module.scss';
 
 const SearchForm = () => {
     return (
         <div className={styles.container}>
             <div className={styles.search}>
-                <LikeIcon className={styles.icon} />
-                <input type="text" placeholder="What are you looking for?" />
+                <MagnifyingIcon className={styles.icon} />
+                <input type="text" placeholder="What are you looking for?" className={styles.mainInput} />
+                <LocationIcon className={styles.icon} />
+                <input type="text" placeholder="Ukrainian" className={styles.locationInput} />
+                <button className={styles.searchButton}>Search</button>
             </div>
         </div>
     );
