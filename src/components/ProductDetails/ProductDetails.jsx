@@ -6,7 +6,8 @@ import DefaultImage from "../../assets/images/default-image.png";
 export default function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
-    const [itemImg, setItemImg] = useState(null);
+    const [itemImgIndex, setItemImgIndex] = useState(0);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         async function fetchProduct() {
@@ -20,26 +21,39 @@ export default function ProductDetails() {
                 const data = await response.json();
                 setProduct(data);
                 if (data.images.length > 0) {
-                    const imageResponse = await fetch(`http://localhost:8080/images/${data.images[0].imageUrl}`, {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
+                    const imagePromises = data.images.map(async (img) => {
+                        const imageResponse = await fetch(`http://localhost:8080/images/${img.imageUrl}`, {
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
+                        if (imageResponse.ok) {
+                            return URL.createObjectURL(await imageResponse.blob());
+                        } else {
+                            return DefaultImage;
                         }
                     });
-                    if (imageResponse.ok) {
-                        setItemImg(URL.createObjectURL(await imageResponse.blob()));
-                    } else {
-                        setItemImg(DefaultImage);
-                    }
+                    const loadedImages = await Promise.all(imagePromises);
+                    setImages(loadedImages);
                 } else {
-                    setItemImg(DefaultImage);
+                    setImages([DefaultImage]);
                 }
             } catch (error) {
                 console.error('Error fetching product:', error);
+                setImages([DefaultImage]);
             }
         }
 
         fetchProduct();
     }, [id]);
+
+    const handleNextImage = () => {
+        setItemImgIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const handlePrevImage = () => {
+        setItemImgIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    };
 
     if (!product) {
         return <div>Loading...</div>;
@@ -48,7 +62,11 @@ export default function ProductDetails() {
     return (
         <div className={style.product_details}>
             <h1>{product.name}</h1>
-            <img src={itemImg} alt={product.name} />
+            <div className={style.image_container}>
+                <button onClick={handlePrevImage} className={style.image_nav_button}>◀</button>
+                <img src={images[itemImgIndex]} alt={product.name} />
+                <button onClick={handleNextImage} className={style.image_nav_button}>▶</button>
+            </div>
             <p>{product.description}</p>
             <p className={style.product_price}>Price: {product.price.priceAmount} {product.price.priceCurrency}</p>
             <p className={style.product_location}>Location: {product.location.settlement}</p>
