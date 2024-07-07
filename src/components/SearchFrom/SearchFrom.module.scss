@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  font-family: 'Museosanscyrl', sans-serif;
 }
 
 .search {
@@ -24,14 +25,16 @@
   outline: none;
   font-size: 16px;
   border-radius: 5px 0 0 5px;
+  font-family: 'Museosanscyrl', sans-serif;
 }
 
 .locationInput {
-  width: 30%;
+  width: 15%;
   height: 100%;
   border: none;
   outline: none;
   font-size: 16px;
+  font-family: 'Museosanscyrl', sans-serif;
 }
 
 .icon {
@@ -49,6 +52,8 @@
   cursor: pointer;
   height: 40px;
   margin: 0;
+  font-family: 'Museosanscyrl', sans-serif;
+  font-size: 14px;
 }
 
 .searchButton:hover {

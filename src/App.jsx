@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from "./components/ProductList/ProductList";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import CreateRent from "./components/CreateRent/CreateRent";
+import './index.scss';
+
 
 function App() {
 	return (
