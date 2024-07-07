@@ -9,6 +9,8 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  font-family: 'Museosanscyrl', sans-serif;
+
 }
 
 .modalContent {
@@ -30,6 +32,10 @@
   cursor: pointer;
 }
 
+.headText{
+  margin-bottom: 20px;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -39,6 +45,7 @@ form {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: 'Museosanscyrl', sans-serif;
   }
 
   button {
@@ -48,6 +55,7 @@ form {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Museosanscyrl', sans-serif;
 
     &:hover {
       background-color: #0056b3;

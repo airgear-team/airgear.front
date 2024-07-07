@@ -40,7 +40,7 @@ export default function AuthModal({ onClose }) {
         <div className={style.modal}>
             <div className={style.modalContent}>
                 <span className={style.close} onClick={onClose}>&times;</span>
-                <h2>{isRegister ? 'Register' : 'Login'}</h2>
+                <h2 className={style.headText}>{isRegister ? 'Register' : 'Login'}</h2>
                 <form onSubmit={handleSubmit}>
                     {isRegister && (
                         <>
