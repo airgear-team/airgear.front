@@ -9,7 +9,7 @@ export default function CreateRent() {
         price: {
             priceAmount: '',
             priceCurrency: 'USD',
-            priceType: 'NEGOTIATED_PRICE'
+            priceType: 'NON_NEGOTIATED_PRICE'
         },
         weekendsPrice: {
             weekendsPriceAmount: '',
@@ -32,9 +32,17 @@ export default function CreateRent() {
     const [selectedImages, setSelectedImages] = useState([]);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         const [mainKey, subKey] = name.split('.');
-        if (subKey) {
+        if (type === 'checkbox') {
+            setFormData({
+                ...formData,
+                [mainKey]: {
+                    ...formData[mainKey],
+                    [subKey]: checked ? 'NEGOTIATED_PRICE' : 'NON_NEGOTIATED_PRICE'
+                }
+            });
+        } else if (subKey) {
             setFormData({
                 ...formData,
                 [mainKey]: {
@@ -49,6 +57,12 @@ export default function CreateRent() {
 
     const handleImageChange = (e) => {
         setSelectedImages([...selectedImages, ...Array.from(e.target.files)]);
+    };
+
+    const handleRemoveImage = (index) => {
+        const newImages = [...selectedImages];
+        newImages.splice(index, 1);
+        setSelectedImages(newImages);
     };
 
     const handleSubmit = (e) => {
@@ -91,7 +105,6 @@ export default function CreateRent() {
             .then(response => response.json())
             .then(data => {
                 console.log('Images upload success:', data);
-                //redirect
                 window.location.href = '/';
             })
             .catch(error => {
@@ -101,53 +114,79 @@ export default function CreateRent() {
 
     return (
         <div>
-            <div>
-                <Header />
-            </div>
+            <Header />
             <div className={style.createRent}>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-                    <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
-                    <input type="number" name="price.priceAmount" placeholder="Price Amount" value={formData.price.priceAmount} onChange={handleChange} required />
-                    <select name="price.priceCurrency" value={formData.price.priceCurrency} onChange={handleChange} required>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                    </select>
-                    <select name="price.priceType" value={formData.price.priceType} onChange={handleChange} required>
-                        <option value="NEGOTIATED_PRICE">Negotiated</option>
-                        <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
-                    </select>
-                    <input type="number" name="weekendsPrice.weekendsPriceAmount" placeholder="Weekends Price Amount" value={formData.weekendsPrice.weekendsPriceAmount} onChange={handleChange} required />
-                    <select name="weekendsPrice.weekendsPriceCurrency" value={formData.weekendsPrice.weekendsPriceCurrency} onChange={handleChange} required>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                    </select>
-                    <select name="weekendsPrice.weekendsPriceType" value={formData.weekendsPrice.weekendsPriceType} onChange={handleChange} required>
-                        <option value="NEGOTIATED_PRICE">Negotiated</option>
-                        <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
-                    </select>
-                    <input type="number" name="deposit.depositAmount" placeholder="Deposit Amount" value={formData.deposit.depositAmount} onChange={handleChange} required />
-                    <select name="deposit.depositCurrency" value={formData.deposit.depositCurrency} onChange={handleChange} required>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                    </select>
-                    <select name="deposit.depositPriceType" value={formData.deposit.depositPriceType} onChange={handleChange} required>
-                        <option value="NEGOTIATED_PRICE">Negotiated</option>
-                        <option value="NON_NEGOTIATED_PRICE">Non-negotiated</option>
-                    </select>
+                    <div className={style.flexRow}>
+                        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className={style.flexItem66} />
+                        <input type="number" name="category.id" placeholder="Category" value={formData.category.id} onChange={handleChange} required className={style.flexItem33} />
+                    </div>
+                    <div className={style.imageUpload}>
+                        <div className={style.imagePreview}>
+                            {selectedImages.map((image, index) => (
+                                <div key={index} className={style.imageContainer}>
+                                    <img src={URL.createObjectURL(image)} alt={`Selected ${index}`} />
+                                    <button type="button" className={style.removeButton} onClick={() => handleRemoveImage(index)}>×</button>
+                                </div>
+                            ))}
+                        </div>
+                        <label htmlFor="imageInput" className={style.imageUploadLabel}>
+                            <i className="fa fa-camera">
+                                <h className={style.imageUploadButtonText}>Add image</h>
+                            </i>
+                        </label>
+                        <input id="imageInput" type="file" multiple onChange={handleImageChange} />
+                    </div>
+                    <input type="text" className={style.description} name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
+
+                    <div className={style.flexRow}>
+                        <input type="number" name="price.priceAmount" placeholder="Price Amount" value={formData.price.priceAmount} onChange={handleChange} required className={style.flexItem33} />
+                        <select name="price.priceCurrency" value={formData.price.priceCurrency} onChange={handleChange} required className={style.flexItem33}>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                        <div className={style.flexItem33}>
+                            <label>
+                                Negotiated:
+                                <input type="checkbox" name="price.priceType" checked={formData.price.priceType === 'NEGOTIATED_PRICE'} onChange={handleChange} />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className={style.flexRow}>
+                        <input type="number" name="weekendsPrice.weekendsPriceAmount" placeholder="Weekends Price Amount" value={formData.weekendsPrice.weekendsPriceAmount} onChange={handleChange} required className={style.flexItem33} />
+                        <select name="weekendsPrice.weekendsPriceCurrency" value={formData.weekendsPrice.weekendsPriceCurrency} onChange={handleChange} required className={style.flexItem33}>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                        <div className={style.flexItem33}>
+                            <label>
+                                Negotiated:
+                                <input type="checkbox" name="weekendsPrice.weekendsPriceType" checked={formData.weekendsPrice.weekendsPriceType === 'NEGOTIATED_PRICE'} onChange={handleChange} />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className={style.flexRow}>
+                        <input type="number" name="deposit.depositAmount" placeholder="Deposit Amount" value={formData.deposit.depositAmount} onChange={handleChange} required className={style.flexItem33} />
+                        <select name="deposit.depositCurrency" value={formData.deposit.depositCurrency} onChange={handleChange} required className={style.flexItem33}>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                        <div className={style.flexItem33}>
+                            <label>
+                                Negotiated:
+                                <input type="checkbox" name="deposit.depositPriceType" checked={formData.deposit.depositPriceType === 'NEGOTIATED_PRICE'} onChange={handleChange} />
+                            </label>
+                        </div>
+                    </div>
+
                     <input type="number" name="locationId" placeholder="Location ID" value={formData.locationId} onChange={handleChange} required />
-                    <input type="number" name="category.id" placeholder="Category ID" value={formData.category.id} onChange={handleChange} required />
                     <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
                     <select name="goodsCondition" value={formData.goodsCondition} onChange={handleChange} required>
                         <option value="NEW">New</option>
                         <option value="USED">Used</option>
                     </select>
-                    <input type="file" multiple onChange={handleImageChange} />
-                    <div className={style.imagePreview}>
-                        {selectedImages.map((image, index) => (
-                            <img key={index} src={URL.createObjectURL(image)} alt={`Selected ${index}`} />
-                        ))}
-                    </div>
                     <button type="submit">Create</button>
                 </form>
             </div>

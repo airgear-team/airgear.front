@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import style from './ProductDetails.module.scss';
 import DefaultImage from "../../assets/images/default-image.png";
+import Header from "../Header/Header.jsx";
 
 export default function ProductDetails() {
-    const { id } = useParams();
+    const {id} = useParams();
     const [product, setProduct] = useState(null);
     const [itemImgIndex, setItemImgIndex] = useState(0);
     const [images, setImages] = useState([]);
@@ -60,17 +61,20 @@ export default function ProductDetails() {
     }
 
     return (
-        <div className={style.product_details}>
-            <h1>{product.name}</h1>
-            <div className={style.image_container}>
-                <button onClick={handlePrevImage} className={style.image_nav_button}>◀</button>
-                <img src={images[itemImgIndex]} alt={product.name} />
-                <button onClick={handleNextImage} className={style.image_nav_button}>▶</button>
+        <div><Header/>
+            <div className={style.product_details}>
+                <h1>{product.name}</h1>
+                <div className={style.image_container}>
+                    <button onClick={handlePrevImage} className={style.image_nav_button}>◀</button>
+                    <img src={images[itemImgIndex]} alt={product.name}/>
+                    <button onClick={handleNextImage} className={style.image_nav_button}>▶</button>
+                </div>
+                <p>{product.description}</p>
+                <p className={style.product_price}>Price: {product.price.priceAmount} {product.price.priceCurrency}</p>
+                <p className={style.product_location}>Location: {product.location.settlement}</p>
+                <p className={style.product_status}>Status: {product.status}</p>
             </div>
-            <p>{product.description}</p>
-            <p className={style.product_price}>Price: {product.price.priceAmount} {product.price.priceCurrency}</p>
-            <p className={style.product_location}>Location: {product.location.settlement}</p>
-            <p className={style.product_status}>Status: {product.status}</p>
         </div>
+
     );
 }
