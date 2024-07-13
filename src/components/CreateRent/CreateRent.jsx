@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import style from './CreateRent.module.scss';
-import Header from "../Header/Header.jsx";
+import Header from '../Header/Header.jsx';
 
 export default function CreateRent() {
     const [formData, setFormData] = useState({
@@ -31,8 +31,20 @@ export default function CreateRent() {
 
     const [selectedImages, setSelectedImages] = useState([]);
 
+    const categoryOptions = [
+        {id: 1, name: 'Real Estate'},
+        {id: 2, name: 'Transport and Special Equipment'},
+        {id: 3, name: 'Tech and Electronics'},
+        {id: 4, name: 'Clothing and Accessories'},
+        {id: 5, name: 'Recreation Equipment'},
+        {id: 6, name: 'Tools and Equipment '},
+        {id: 7, name: 'Sports Equipment'},
+        {id: 8, name: 'Beauty and Health'},
+        {id: 9, name: 'Event Goods'},
+    ];
+
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const {name, value, type, checked} = e.target;
         const [mainKey, subKey] = name.split('.');
         if (type === 'checkbox') {
             setFormData({
@@ -51,7 +63,7 @@ export default function CreateRent() {
                 }
             });
         } else {
-            setFormData({ ...formData, [name]: value });
+            setFormData({...formData, [name]: value});
         }
     };
 
@@ -114,79 +126,250 @@ export default function CreateRent() {
 
     return (
         <div>
-            <Header />
+            <Header/>
             <div className={style.createRent}>
                 <form onSubmit={handleSubmit}>
+                    <h1 className={style.boldTitle}>Briefly describe</h1>
+
                     <div className={style.flexRow}>
-                        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className={style.flexItem66} />
-                        <input type="number" name="category.id" placeholder="Category" value={formData.category.id} onChange={handleChange} required className={style.flexItem33} />
+                        <div className={style.flexItem66}>
+                            <h1 className={style.smallTitle}>Enter a name*</h1>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name of your product"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                                className={style.flexItem66}
+                            />
+                            <h1 className={style.smallTitle}>Enter at least 10 characters.</h1>
+                        </div>
+                        <div className={style.flexItem33}>
+                            <h1 className={style.smallTitle}>Category*</h1>
+                            <select
+                                name="category.id"
+                                value={formData.category.id}
+                                onChange={handleChange}
+                                required
+                                className={style.flexItem33}
+                            >
+                                <option value="">Select Category</option>
+                                {categoryOptions.map(option => (
+                                    <option key={option.id} value={option.id}>
+                                        {option.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
+
+                    <h1 className={style.boldTitlePhoto}>Photo</h1>
                     <div className={style.imageUpload}>
                         <div className={style.imagePreview}>
                             {selectedImages.map((image, index) => (
                                 <div key={index} className={style.imageContainer}>
-                                    <img src={URL.createObjectURL(image)} alt={`Selected ${index}`} />
-                                    <button type="button" className={style.removeButton} onClick={() => handleRemoveImage(index)}>×</button>
+                                    <img src={URL.createObjectURL(image)} alt={`Selected ${index}`}/>
+                                    <button
+                                        type="button"
+                                        className={style.removeButton}
+                                        onClick={() => handleRemoveImage(index)}
+                                    >
+                                        ×
+                                    </button>
                                 </div>
                             ))}
                         </div>
                         <label htmlFor="imageInput" className={style.imageUploadLabel}>
                             <i className="fa fa-camera">
-                                <h className={style.imageUploadButtonText}>Add image</h>
+                                <h className={style.imageUploadButtonText}>Add photo</h>
                             </i>
                         </label>
-                        <input id="imageInput" type="file" multiple onChange={handleImageChange} />
+                        <input id="imageInput" type="file" multiple onChange={handleImageChange}/>
                     </div>
-                    <input type="text" className={style.description} name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
 
-                    <div className={style.flexRow}>
-                        <input type="number" name="price.priceAmount" placeholder="Price Amount" value={formData.price.priceAmount} onChange={handleChange} required className={style.flexItem33} />
-                        <select name="price.priceCurrency" value={formData.price.priceCurrency} onChange={handleChange} required className={style.flexItem33}>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                        <div className={style.flexItem33}>
+                    <h1 className={style.boldTitle}>Description</h1>
+                    <textarea
+                        className={style.description}
+                        name="description"
+                        placeholder="Think about what you would like to know from the ad and add it to the description."
+                        value={formData.description}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <h1 className={style.boldTitle}>Price</h1>
+                    <div className={style.currencyContainer}>
+
+                        <div className={style.currency}>
+                            <input
+                                type="number"
+                                name="price.priceAmount"
+                                placeholder="Price Amount"
+                                value={formData.price.priceAmount}
+                                onChange={handleChange}
+                                onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                        event.preventDefault();
+                                    }
+                                }}
+                                required
+                                className={style.currencyInputNumber}
+                            />
+                            <select
+                                name="price.priceCurrency"
+                                value={formData.price.priceCurrency}
+                                onChange={handleChange}
+                                onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                        event.preventDefault();
+                                    }
+                                }}
+                                required
+                                className={style.currencyDropDownMenu}
+                            >
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="UAH">UAH</option>
+                            </select>
+                            <div className={style.currencyCheckbox}>
+                                <label>
+                                    Negotiable:
+                                    <input
+                                        type="checkbox"
+                                        name="price.priceType"
+                                        checked={formData.price.priceType === 'NEGOTIATED_PRICE'}
+                                        onChange={handleChange}
+                                    />
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div className={style.currency}>
+                            <input
+                                type="number"
+                                name="weekendsPrice.weekendsPriceAmount"
+                                placeholder="Weekends Price Amount"
+                                value={formData.weekendsPrice.weekendsPriceAmount}
+                                onChange={handleChange}
+                                onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                        event.preventDefault();
+                                    }
+                                }}
+                                required
+                                className={style.currencyInputNumber}
+
+                            />
+                            <select
+                                name="weekendsPrice.weekendsPriceCurrency"
+                                value={formData.weekendsPrice.weekendsPriceCurrency}
+                                onChange={handleChange}
+                                required
+                                className={style.currencyDropDownMenu}
+                            >
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="UAH">UAH</option>
+                            </select>
+                            <div className={style.currencyCheckbox}>
+                                <label>
+                                    Negotiable:
+                                    <input
+                                        type="checkbox"
+                                        name="weekendsPrice.weekendsPriceType"
+                                        checked={formData.weekendsPrice.weekendsPriceType === 'NEGOTIATED_PRICE'}
+                                        onChange={handleChange}
+                                    />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className={style.currency}>
+                            <input
+                                type="number"
+                                name="deposit.depositAmount"
+                                placeholder="Deposit Amount"
+                                value={formData.deposit.depositAmount}
+                                onChange={handleChange}
+                                onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                        event.preventDefault();
+                                    }
+                                }}
+                                required
+                                className={style.currencyInputNumber}
+                            />
+                            <select
+                                name="deposit.depositCurrency"
+                                value={formData.deposit.depositCurrency}
+                                onChange={handleChange}
+                                required
+                                className={style.currencyDropDownMenu}
+                            >
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="UAH">UAH</option>
+                            </select>
+                            <div className={style.currencyCheckbox}>
+                                <label>
+                                    Negotiable:
+                                    <input
+                                        type="checkbox"
+                                        name="deposit.depositPriceType"
+                                        checked={formData.deposit.depositPriceType === 'NEGOTIATED_PRICE'}
+                                        onChange={handleChange}
+                                    />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 className={style.boldTitle}>Other information</h1>
+
+                    <div className={style.otherInformation}>
+                        <div className={style.location}>
+                            <input
+                                type="number"
+                                name="locationId"
+                                placeholder="Location ID"
+                                value={formData.locationId}
+                                onChange={handleChange}
+                                required
+                                className={style.locationInput} // змінив клас для CSS стилів
+                            />
+                        </div>
+                        <div className={style.phoneNumber}>
+                            <input
+                                type="text"
+                                name="phoneNumber"
+                                placeholder="Phone Number"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                                required
+                                className={style.phoneNumberInput}
+                            />
+                        </div>
+
+                        <div className={style.goodsConditionCheckbox}>
                             <label>
-                                Negotiated:
-                                <input type="checkbox" name="price.priceType" checked={formData.price.priceType === 'NEGOTIATED_PRICE'} onChange={handleChange} />
+                                Is new ?
+                                <input
+                                    type="checkbox"
+                                    name="goodsCondition"
+                                    checked={formData.goodsCondition === "NEW"}
+                                    onChange={(e) => handleChange({
+                                        target: {
+                                            name: "goodsCondition",
+                                            value: e.target.checked ? "NEW" : "USED"
+                                        }
+                                    })}
+                                />
                             </label>
                         </div>
                     </div>
 
-                    <div className={style.flexRow}>
-                        <input type="number" name="weekendsPrice.weekendsPriceAmount" placeholder="Weekends Price Amount" value={formData.weekendsPrice.weekendsPriceAmount} onChange={handleChange} required className={style.flexItem33} />
-                        <select name="weekendsPrice.weekendsPriceCurrency" value={formData.weekendsPrice.weekendsPriceCurrency} onChange={handleChange} required className={style.flexItem33}>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                        <div className={style.flexItem33}>
-                            <label>
-                                Negotiated:
-                                <input type="checkbox" name="weekendsPrice.weekendsPriceType" checked={formData.weekendsPrice.weekendsPriceType === 'NEGOTIATED_PRICE'} onChange={handleChange} />
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className={style.flexRow}>
-                        <input type="number" name="deposit.depositAmount" placeholder="Deposit Amount" value={formData.deposit.depositAmount} onChange={handleChange} required className={style.flexItem33} />
-                        <select name="deposit.depositCurrency" value={formData.deposit.depositCurrency} onChange={handleChange} required className={style.flexItem33}>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                        <div className={style.flexItem33}>
-                            <label>
-                                Negotiated:
-                                <input type="checkbox" name="deposit.depositPriceType" checked={formData.deposit.depositPriceType === 'NEGOTIATED_PRICE'} onChange={handleChange} />
-                            </label>
-                        </div>
-                    </div>
-
-                    <input type="number" name="locationId" placeholder="Location ID" value={formData.locationId} onChange={handleChange} required />
-                    <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
-                    <select name="goodsCondition" value={formData.goodsCondition} onChange={handleChange} required>
-                        <option value="NEW">New</option>
-                        <option value="USED">Used</option>
-                    </select>
                     <button type="submit">Create</button>
                 </form>
             </div>
