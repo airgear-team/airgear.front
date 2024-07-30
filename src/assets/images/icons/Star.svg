@@ -1,7 +1,7 @@
 <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect id="favorites" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
     <g>
-        <path id="Vector" d="M15.09 8.58L22 9.64L17 14.76L18.18 22L12 18.58L5.82 22L7 14.76L2 9.64L8.9 8.58L12 2L15.09 8.58Z" stroke="#407BFF" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round"/>
+        <path id="Vector" d="M15.09 8.58L22 9.64L17 14.76L18.18 22L12 18.58L5.82 22L7 14.76L2 9.64L8.9 8.58L12 2L15.09 8.58Z" stroke="#00308E" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round"/>
     </g>
 </svg>
 
