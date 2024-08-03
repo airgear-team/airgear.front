@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: center;
+  align-items: flex-start; /* Забезпечує вирівнювання зображень по верхньому краю */
+}
+
+.imageWrapper {
+  text-align: center;
+  margin: 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto; /* Дозволяє змінювати висоту в залежності від тексту */
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.image {
+  height: 70px;
+  display: block; /* Забезпечує, що зображення не вплине на текстовий блок */
+}
+
+.label {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  max-width: 70px; /* Ширина не перевищує ширину картинки */
+  word-wrap: break-word; /* Дозволяє переносити слова на новий рядок */
+  text-align: center; /* Центрує текст під картинкою */
+}
