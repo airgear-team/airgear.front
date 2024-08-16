@@ -2,36 +2,32 @@ import React from 'react';
 import MagnifyingIcon from "../../assets/images/icons/Magnifying-glass.svg?react";
 import LocationIcon from "../../assets/images/icons/Location-point.svg?react";
 import styles from './SearchFrom.module.scss';
-import {useState, useEffect} from "react";
-
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const SearchForm = () => {
-const [productCard, setProductCard] = useState([]);
-const [name, setName] = useState("");
-const [location, setLocation] = useState("");
-const handleClick = (e) => {
+    const [name, setName] = useState("");
+    const [location, setLocation] = useState("");
+    const navigate = useNavigate();
+
+    const handleClick = (e) => {
         e.preventDefault();
-        //fetch('http://localhost:8089/search/?search=name:Маска для лиця332, location.settlement:Дніпро', {
         fetch(`http://localhost:8089/search/?search=name:${name}, location.settlement:${location}`, {
             method: 'GET',
-            mode: 'no-cors',
             credentials: 'include',
             headers: {
                 'Accept': 'application/json'
             },
-            //body: JSON.stringify(formData)
         })
             .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            setProductCard(data);
-
-                        })
-                        .catch(error => {
-                            //console.error('Error fetching posts:', error);
-                        });
+            .then(data => {
+                console.log(data);
+                navigate('/search-results', { state: { productCard: data } });
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
     };
-
 
     return (
         <div className={styles.container}>
