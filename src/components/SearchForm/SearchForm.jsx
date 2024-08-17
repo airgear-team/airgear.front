@@ -1,7 +1,7 @@
 import React from 'react';
 import MagnifyingIcon from "../../assets/images/icons/Magnifying-glass.svg?react";
 import LocationIcon from "../../assets/images/icons/Location-point.svg?react";
-import styles from './SearchFrom.module.scss';
+import styles from './SearchForm.module.scss';
 
 const SearchForm = () => {
     return (

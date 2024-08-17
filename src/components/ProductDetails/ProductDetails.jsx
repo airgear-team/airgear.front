@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import style from './ProductDetails.module.scss';
 import DefaultImage from "../../assets/images/default-image.png";
 import Header from "../Header/Header.jsx";
+import SearchForm from "../SearchForm/SearchForm.jsx";
 
 export default function ProductDetails() {
     const {id} = useParams();
@@ -61,7 +62,12 @@ export default function ProductDetails() {
     }
 
     return (
-        <div><Header/>
+        <div>
+            <Header/>
+            <div><SearchForm/></div>
+
+            
+            <div className={style.container}>
             <div className={style.product_details}>
                 <h1>{product.name}</h1>
                 <div className={style.image_container}>
@@ -73,6 +79,7 @@ export default function ProductDetails() {
                 <p className={style.product_price}>Price: {product.price.priceAmount} {product.price.priceCurrency}</p>
                 <p className={style.product_location}>Location: {product.location.settlement}</p>
                 <p className={style.product_status}>Status: {product.status}</p>
+            </div>
             </div>
         </div>
 
