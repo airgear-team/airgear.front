@@ -11,7 +11,7 @@ const SearchForm = () => {
                 <input type="text" placeholder="What are you looking for?" className={styles.mainInput} />
                 <LocationIcon className={styles.icon} />
                 <input type="text" placeholder="Ukraine" className={styles.locationInput} />
-                <button className={styles.searchButton}>SEARCH</button>
+                <button className={styles.searchButton}>Search</button>
             </div>
         </div>
     );

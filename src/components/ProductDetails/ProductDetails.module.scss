@@ -1,8 +1,61 @@
-.container{
-    background-color: #F2F7FF;
+.container {
+  background-color: #F2F7FF;
+  display: flex;
+  justify-content: space-between;
 }
 
-.product_details {
+.leftContainer {
+  margin-left: 15%;
+  flex: 1;
+  width: 40%;
+}
+
+.rightContainer {
+  margin-right: 15%;
+  flex: 1;
+  width: 40%;
+}
+
+.containerElement {
+  position: relative;
+  background-color: white;
+  margin: 10px;
+  padding: 20px;
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.imageNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.imageNavButton:first-child {
+  left: 0;
+}
+
+.imageNavButton:last-child {
+  right: 0;
+}
+
+.productDetails {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,25 +73,6 @@
     color: #333;
   }
 
-  .image_container {
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      margin: 0 10px;
-    }
-
-    .image_nav_button {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
-  }
-
   p {
     font-size: 18px;
     margin-bottom: 10px;
@@ -48,17 +82,74 @@
       margin-bottom: 0;
     }
   }
-
-  .product_price {
-    font-size: 22px;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 20px;
-  }
-
-  .product_location,
-  .product_status {
+  .productLocation,
+  .productStatus {
     font-size: 16px;
     color: #888;
   }
+}
+
+
+.publishinDate {
+  color: #7889A5;
+}
+
+.goodsName {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+}
+
+.goodsPrice{
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.goodsDeposit{
+  margin-top: 20px;
+}
+
+.goodsDepositPrice {
+  color: black;
+  font-weight: bold;
+}
+
+.likeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messageButton {
+  width: 100%;
+  height: 30px;
+  background-color: #407BFF;
+  margin-top: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  color: white;
+
+}
+
+.phoneNumberButton {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  margin-top: 5px;
+  border: 2px solid #407BFF;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
 }
