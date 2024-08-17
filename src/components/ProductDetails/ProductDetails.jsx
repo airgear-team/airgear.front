@@ -12,11 +12,10 @@ export default function ProductDetails() {
 
     useEffect(() => {
         async function fetchProduct() {
-            const token = localStorage.getItem('token');
             try {
                 const response = await fetch(`http://localhost:8080/goods/${id}`, {
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Accept': 'application/json'
                     }
                 });
                 const data = await response.json();
@@ -25,7 +24,6 @@ export default function ProductDetails() {
                     const imagePromises = data.images.map(async (img) => {
                         const imageResponse = await fetch(`http://localhost:8080/images/${img.imageUrl}`, {
                             headers: {
-                                'Authorization': `Bearer ${token}`
                             }
                         });
                         if (imageResponse.ok) {
