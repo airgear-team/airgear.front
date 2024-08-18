@@ -49,7 +49,7 @@ const Categories = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Product categories</h1>
+            <h1 className={styles.title}>Категорії товарів</h1>
             <div className={styles.imageContainer}>
                 {images.map((item, index) => (
                     <div key={index} className={styles.imageWrapper}>

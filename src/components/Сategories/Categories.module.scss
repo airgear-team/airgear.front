@@ -11,7 +11,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   justify-content: center;
-  align-items: flex-start; /* Забезпечує вирівнювання зображень по верхньому краю */
+  align-items: flex-start;
 }
 
 .imageWrapper {
@@ -20,7 +20,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto; /* Дозволяє змінювати висоту в залежності від тексту */
+  height: auto;
+  cursor: pointer;
+  position: relative;
+}
+
+.imageWrapper:hover .label {
+  color: #407BFF;
 }
 
 .title {
@@ -31,7 +37,9 @@
 
 .image {
   height: 70px;
-  display: block; /* Забезпечує, що зображення не вплине на текстовий блок */
+  display: block;
+  transition: none; /* Видалити будь-які переходи для бордерів */
+  box-sizing: border-box;
 }
 
 .label {
@@ -39,7 +47,8 @@
   font-size: 14px;
   color: #333;
   font-weight: bold;
-  max-width: 70px; /* Ширина не перевищує ширину картинки */
-  word-wrap: break-word; /* Дозволяє переносити слова на новий рядок */
-  text-align: center; /* Центрує текст під картинкою */
+  max-width: 70px;
+  word-wrap: break-word;
+  text-align: center;
+  transition: color 0.3s ease;
 }

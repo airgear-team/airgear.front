@@ -107,9 +107,10 @@ export default function ProductDetails() {
                             </h1>
                         </div>
                         <h1 className={style.descriptionHead}>ОПИС</h1>
-                        <p>{product.description}</p>
+                        <p className={style.description}>{product.description}</p>
                     </div>
                 </div>
+
 
 
 
