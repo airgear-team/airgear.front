@@ -40,19 +40,19 @@ export default function AuthModal({ onClose }) {
         <div className={style.modal}>
             <div className={style.modalContent}>
                 <span className={style.close} onClick={onClose}>&times;</span>
-                <h2 className={style.headText}>{isRegister ? 'Register' : 'Login'}</h2>
+                <h2 className={style.headText}>{isRegister ? 'Зареєструватись' : 'Увійти'}</h2>
                 <form onSubmit={handleSubmit}>
                     {isRegister && (
                         <>
-                            <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-                            <input type="text" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} required />
+                            <input type="text" name="name" placeholder="Ім'я" value={formData.name} onChange={handleChange} required />
+                            <input type="text" name="phone" placeholder="Номер телефону" value={formData.phone} onChange={handleChange} required />
                         </>
                     )}
-                    <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-                    <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-                    <button type="submit">{isRegister ? 'Register' : 'Login'}</button>
+                    <input type="email" name="email" placeholder="Електронна пошта" value={formData.email} onChange={handleChange} required />
+                    <input type="password" name="password" placeholder="Пароль" value={formData.password} onChange={handleChange} required />
+                    <button type="submit">{isRegister ? 'Зареєструватись' : 'Увійти'}</button>
                     <button type="button" onClick={() => setIsRegister(!isRegister)}>
-                        {isRegister ? 'Already have an account? Login' : 'Don\'t have an account? Register'}
+                        {isRegister ? 'Вже маєте аккаунт? Увійти' : 'Ще не маєте аккаунта? Зареєструватись'}
                     </button>
                 </form>
             </div>

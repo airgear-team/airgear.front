@@ -58,12 +58,12 @@ export default function Header() {
             <div className={style.auth}>
                 {isLoggedIn ? (
                     <>
-                        <button onClick={handleCreateRentClick}>Add Ad</button>
-                        <button onClick={handleProfileClick}>Profile</button>
-                        <button onClick={handleLogoutClick}>Logout</button>
+                        <button onClick={handleCreateRentClick}>Додати оголошення</button>
+                        <button onClick={handleProfileClick}>Ваш профіль</button>
+                        <button onClick={handleLogoutClick}>Вийти</button>
                     </>
                 ) : (
-                    <button onClick={handleLoginClick}>Login</button>
+                    <button onClick={handleLoginClick}>Увійти</button>
                 )}
             </div>
             {showAuthModal && <AuthModal onClose={handleCloseModal} />}

@@ -8,6 +8,7 @@ import LikeIcon from "../../assets/images/icons/Star.svg?react";
 import MapIcon from "../../assets/images/icons/Map.svg?react";
 import UserStars from "../../assets/images/icons/UserStars.svg?react";
 import UserStatusIcon from "../../assets/images/icons/UserStatusIcon.svg?react";
+import Arrow from "../../assets/images/icons/Arrow.svg?react";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -58,16 +59,16 @@ export default function ProductDetails() {
 
     function formatDate(dateString) {
         const options = {
-            year: 'numeric',
-            month: '2-digit',
             day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
             hour12: false,
         };
-        const formattedDate = new Date(dateString).toLocaleString('en-GB', options);
+        const formattedDate = new Date(dateString).toLocaleString('uk-UA', options);
         const [date, time] = formattedDate.split(', ');
-        return `Published on ${date.replace(/\//g, '/')} at ${time}`;
+        return `Опубліковано ${date} о ${time}`;
     }
 
     if (!product) {
@@ -82,60 +83,45 @@ export default function ProductDetails() {
                 <div className={style.leftContainer}>
                     <div className={style.containerElement}>
                         <div className={style.imageContainer}>
-                            <button onClick={handlePrevImage} className={style.imageNavButton}>◀</button>
+                            <button onClick={handlePrevImage} className={style.imageNavButton}><Arrow /></button>
                             <img src={images[itemImgIndex]} alt={product.name} />
-                            <button onClick={handleNextImage} className={style.imageNavButton}>▶</button>
+                            <button onClick={handleNextImage} className={`${style.imageNavButton} ${style.flippedArrow}`}><Arrow /></button>
+                        </div>
+                        <div className={style.imageIndicators}>
+                            {images.map((_, index) => (
+                                <div
+                                    key={index}
+                                    className={`${style.indicator} ${index === itemImgIndex ? style.activeIndicator : ''}`}
+                                />
+                            ))}
                         </div>
                     </div>
                     <div className={style.containerElement}>
                         <p>{product.description}</p>
                     </div>
                 </div>
-
-
-
-
-
-
-
                 <div className={style.rightContainer}>
                     <div className={style.containerElement}>
                         <button className={style.likeButton} type="button"><LikeIcon /></button>
-
                         <h1 className={style.publishinDate}>{formatDate(product.createdAt)}</h1>
-
                         <h1 className={style.goodsName}>{product.name}</h1>
-
                         <p className={style.goodsPrice}>{product.price.priceAmount} {product.price.priceCurrency}</p>
                         <p className={style.goodsDeposit}>
-                            Deposit : <span className={style.goodsDepositPrice}>{product.deposit.depositAmount} {product.deposit.depositCurrency}</span>
+                            Заства : <span className={style.goodsDepositPrice}>{product.deposit.depositAmount} {product.deposit.depositCurrency}</span>
                         </p>
-
-                        <button className={style.messageButton} type="button">Message</button>
-                        <button className={style.phoneNumberButton} type="button">Phone number</button>
-
-                        
-
-
+                        <button className={style.messageButton} type="button">Повідомлення</button>
+                        <button className={style.phoneNumberButton} type="button">Показати телефон</button>
                     </div>
-
                     <div className={style.containerElement}>
-                    <div><UserStars /></div>
-
-                    <div>User<UserStatusIcon /></div>
-
-                    <div>What is a rating? All products of the author</div>
-
+                        <div><UserStars /></div>
+                        <div>User<UserStatusIcon /></div>
+                        <div>What is a rating? All products of the author</div>
                     </div>
-
                     <div className={style.containerElement}>
                         <div><MapIcon /></div>
                         <p className={style.productLocation}>Location: {product.location.settlement}</p>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     );

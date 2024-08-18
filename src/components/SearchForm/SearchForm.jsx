@@ -8,10 +8,10 @@ const SearchForm = () => {
         <div className={styles.container}>
             <div className={styles.search}>
                 <MagnifyingIcon className={styles.icon} />
-                <input type="text" placeholder="What are you looking for?" className={styles.mainInput} />
+                <input type="text" placeholder="Знайти..." className={styles.mainInput} />
                 <LocationIcon className={styles.icon} />
-                <input type="text" placeholder="Ukraine" className={styles.locationInput} />
-                <button className={styles.searchButton}>Search</button>
+                <input type="text" placeholder="Вся Україна" className={styles.locationInput} />
+                <button className={styles.searchButton}>Пошук</button>
             </div>
         </div>
     );

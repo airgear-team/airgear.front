@@ -28,12 +28,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 400px;
+  background-color: white;
 }
 
 .imageContainer img {
-  width: 100%;
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -42,10 +44,20 @@
   top: 50%;
   transform: translateY(-50%);
   background: none;
-  border: none;
+  border: 2px solid #407BFF;
   font-size: 24px;
+  padding-left: 9px;
+  padding-right: 9px;
   cursor: pointer;
+  box-sizing: border-box;
+  height: 40px;
+  margin: 5px;
 }
+
+.flippedArrow {
+  transform: translateY(-50%) scaleX(-1); 
+}
+
 
 .imageNavButton:first-child {
   left: 0;
@@ -152,4 +164,24 @@
   border: 2px solid #407BFF;
   font-family: 'Inter', sans-serif;
   font-weight: bold;
+}
+
+.imageIndicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #7889A5;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.activeIndicator {
+  background-color: #CCE5F7;
+  border: none;
 }

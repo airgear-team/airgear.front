@@ -12,15 +12,16 @@ import image8 from '../../assets/images/categories/tools-and-equipment.svg';
 import image9 from '../../assets/images/categories/transport-and-special-equipment.svg';
 
 const images = [
-    { src: image1, label: 'Appliances' },
-    { src: image2, label: 'Beauty & Health' },
-    { src: image3, label: 'Clothes & Accessories' },
-    { src: image4, label: 'Event Goods' },
-    { src: image5, label: 'Property' },
-    { src: image6, label: 'Recreational Equipment' },
-    { src: image7, label: 'Sport Equipment' },
-    { src: image8, label: 'Tools & Equipment' },
-    { src: image9, label: 'Transport Equipment' },
+    { src: image1, label: 'Побутова техніка' },
+    { src: image2, label: 'Краса та здоров’я' },
+    { src: image3, label: 'Одяг та аксесуари' },
+    { src: image4, label: 'Товари для подій' },
+    { src: image5, label: 'Нерухомість' },
+    { src: image6, label: 'Відпочинок' },
+    { src: image7, label: 'Спортивне обладнання' },
+    { src: image8, label: 'Інструменти' },
+    { src: image9, label: 'Транспорт' },
+    
 ];
 
 const Categories = () => {
