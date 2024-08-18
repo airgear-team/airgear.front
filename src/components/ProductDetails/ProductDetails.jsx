@@ -96,10 +96,24 @@ export default function ProductDetails() {
                             ))}
                         </div>
                     </div>
+
                     <div className={style.containerElement}>
+                        <div>
+                            <h1 className={style.descriptionElement}>
+                                Стан: {product.goodsCondition === 'NEW' ? 'Нове' : 'Вживане'}
+                            </h1>
+                            <h1 className={style.descriptionElement}>
+                                Рік випуску: 2017
+                            </h1>
+                        </div>
+                        <h1 className={style.descriptionHead}>ОПИС</h1>
                         <p>{product.description}</p>
                     </div>
                 </div>
+
+
+
+
                 <div className={style.rightContainer}>
                     <div className={style.containerElement}>
                         <button className={style.likeButton} type="button"><LikeIcon /></button>
