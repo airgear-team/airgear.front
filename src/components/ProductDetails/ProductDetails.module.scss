@@ -215,3 +215,73 @@
   white-space: pre-wrap;
   line-height: 1.3;
 }
+.userContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.leftUserContainer {
+  display: flex; /* Дозволяє розміщення елементів в один рядок */
+  align-items: center; /* Вертикальне вирівнювання по центру */
+}
+
+.rightUserContainer {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.userStars {
+  max-width: 190px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.userHead {
+  color: black;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  margin-right: 8px;
+  font-size: 12px;
+}
+
+.userEvaluation {
+  color: #407BFF;
+  font-size: 12px;
+}
+
+.userStatusIcon {
+  width: 18px; 
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userStatusIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.separatorContainer {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.separator {
+  border: none;
+  border-bottom: 1px solid #7889A5;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.viewsText {
+  color: #7889A5;
+  font-size: 12px;
+  margin-top: 15px;
+}

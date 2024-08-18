@@ -9,6 +9,7 @@ import MapIcon from "../../assets/images/icons/Map.svg?react";
 import UserStars from "../../assets/images/icons/UserStars.svg?react";
 import UserStatusIcon from "../../assets/images/icons/UserStatusIcon.svg?react";
 import Arrow from "../../assets/images/icons/Arrow.svg?react";
+import UserDefaultAvatar from "../../assets/images/icons/UserDefaultAvatar.svg?react";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -108,7 +109,19 @@ export default function ProductDetails() {
                         </div>
                         <h1 className={style.descriptionHead}>ОПИС</h1>
                         <p className={style.description}>{product.description}</p>
+
+                        <div className={style.separatorContainer}>
+                            <hr className={style.separator} />
+                            <div className={style.viewsText}>Переглядів : 180</div>
+                        </div>
                     </div>
+
+                    <div className={style.containerElement}>
+                        <h1>ЗВ’ЯЗАТИСЯ З ПРОДАВЦЕМ</h1>
+                        <h1>+(XXX)-XX–XX–XXX</h1>
+                        <button className={style.phoneNumberButton} type="button">Показати</button>
+                    </div>
+
                 </div>
 
 
@@ -122,19 +135,46 @@ export default function ProductDetails() {
                         <h1 className={style.goodsName}>{product.name}</h1>
                         <p className={style.goodsPrice}>{product.price.priceAmount} {product.price.priceCurrency}</p>
                         <p className={style.goodsDeposit}>
-                            Заства : <span className={style.goodsDepositPrice}>{product.deposit.depositAmount} {product.deposit.depositCurrency}</span>
+                            Застава : <span className={style.goodsDepositPrice}>{product.deposit.depositAmount} {product.deposit.depositCurrency}</span>
                         </p>
                         <button className={style.messageButton} type="button">Повідомлення</button>
                         <button className={style.phoneNumberButton} type="button">Показати телефон</button>
                     </div>
+
+
                     <div className={style.containerElement}>
-                        <div><UserStars /></div>
-                        <div>User<UserStatusIcon /></div>
-                        <div>What is a rating? All products of the author</div>
+                        <div className={style.userContainer}>
+                            <div className={style.leftUserContainer}>
+                                <div className={style.userHead}>
+                                    КОРИСТУВАЧ
+                                </div>
+                                <div className={style.userStatusIcon}><UserStatusIcon /></div>
+
+                            </div>
+                            <div className={style.rightUserContainer}>
+                                <div className={style.userStars}><UserStars /><div className={style.userEvaluation}> (23 оцінки)</div></div>
+                            </div>
+                        </div>
+
+
+                        <div><UserDefaultAvatar /> Сергій Був не щодавно</div>
+                        <div>Що таке рейтинг? Усі оголошення автора </div>
+
                     </div>
                     <div className={style.containerElement}>
                         <div><MapIcon /></div>
                         <p className={style.productLocation}>Location: {product.location.settlement}</p>
+                    </div>
+
+                    <div className={style.containerElement}>
+                        <h1>Про нас</h1>
+                        <p>— Великий асортимент шин з Німеччини.</p>
+                        <p>— Комплекти, пари, одиночні, на запаску.</p>
+                        <p>— Ціна від 800 грн/шт</p>
+                        <p>— Допоможемо підібрати та проконсультуємо вас у підборі шин.</p>
+
+                        <h1>Показати повністю</h1>
+
                     </div>
                 </div>
             </div>
