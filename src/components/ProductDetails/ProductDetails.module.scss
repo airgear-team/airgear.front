@@ -24,6 +24,7 @@
   margin-left: 5px;
   margin-right: 5px;
   padding: 20px;
+  border-radius: 5px;
 }
 
 .imageContainer {
@@ -97,7 +98,7 @@
       margin-bottom: 0;
     }
   }
-  .productLocation,
+
   .productStatus {
     font-size: 16px;
     color: #888;
@@ -368,4 +369,79 @@
   transform: rotate(180deg);
   margin-left: 3px;
   margin-top: 2px;
+}
+
+
+
+
+
+
+.locationContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.locationHeader {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.locationText {
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+}
+
+.locationText svg {
+  margin-right: 5px;
+}
+
+.mapIconContainer {
+  display: flex;
+  align-items: flex-start;
+  width: 180px;
+}
+
+.mapIconContainer svg {
+  width: 100%;
+  height: 100%;
+}
+
+.locationRegion {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.contactHead {
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.contactPhone {
+  display: flex;
+  align-items: center; 
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contactPhone svg {
+  height: 1em; /* Встановлює висоту SVG на рівень шрифту */
+  margin-right: 5px; /* Відстань між SVG та текстом */
+}
+
+.phoneNumberButton {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  margin-top: 5px;
+  border: 2px solid #407BFF;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
 }

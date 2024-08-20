@@ -11,6 +11,8 @@ import UserStatusIcon from "../../assets/images/icons/UserStatusIcon.svg?react";
 import Arrow from "../../assets/images/icons/Arrow.svg?react";
 import ArrowDescription from "../../assets/images/icons/ArrowDescription.svg?react";
 import UserDefaultAvatar from "../../assets/images/icons/UserDefaultAvatar.svg?react";
+import LocationIcon from "../../assets/images/icons/Location-point.svg?react";
+import PhoneIcon from "../../assets/images/icons/PhoneIcon.svg?react";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -18,11 +20,17 @@ export default function ProductDetails() {
     const [itemImgIndex, setItemImgIndex] = useState(0);
     const [images, setImages] = useState([]);
     const [showMore, setShowMore] = useState(false);
+    const [showPhoneNumber, setShowPhoneNumber] = useState(false);
+
     let myString = "— Великий асортимент шин з Німеччини.\n— Комплекти, пари, одиночні, на запаску.\n— Ціна від 800 грн/шт\n— Допоможемо підібрати та проконсультуємо вас у підборі шин.\n— Шини для будь-яких типів автомобілів.\n— Гарантія якості та довговічності.\n— Доступні різні розміри та моделі.\n— Швидка доставка по всій Україні.";
 
 
     const handleToggle = () => {
         setShowMore(prevState => !prevState);
+    };
+
+    const handleButtonClick = () => {
+        setShowPhoneNumber(prevState => !prevState);
     };
 
 
@@ -126,9 +134,21 @@ export default function ProductDetails() {
                     </div>
 
                     <div className={style.containerElement}>
-                        <h1>ЗВ’ЯЗАТИСЯ З ПРОДАВЦЕМ</h1>
-                        <h1>+(XXX)-XX–XX–XXX</h1>
-                        <button className={style.phoneNumberButton} type="button">Показати</button>
+                        <h1 className={style.contactHead}>ЗВ’ЯЗАТИСЯ З ПРОДАВЦЕМ</h1>
+                        <div className={style.userInfo}>
+                            <UserDefaultAvatar />
+                            <div className={style.userText}>
+                                <div className={style.userName}>Сергій</div>
+                                <div className={style.userStatus}>Був нещодавно</div>
+                            </div>
+                        </div>
+                        <h1 className={style.contactPhone}>
+                            <PhoneIcon />
+                            {showPhoneNumber ? product.phoneNumber : '+(XXX)-XX–XX–XXX'}
+                        </h1>
+                        <button className={style.phoneNumberButton} type="button" onClick={handleButtonClick}>
+                            {showPhoneNumber ? 'Сховати' : 'Показати'}
+                        </button>
                     </div>
 
                 </div>
@@ -143,7 +163,15 @@ export default function ProductDetails() {
                             Застава : <span className={style.goodsDepositPrice}>{product.deposit.depositAmount} {product.deposit.depositCurrency}</span>
                         </p>
                         <button className={style.messageButton} type="button">Повідомлення</button>
-                        <button className={style.phoneNumberButton} type="button">Показати телефон</button>
+                        <div>
+                            <button
+                                className={style.phoneNumberButton}
+                                type="button"
+                                onClick={handleButtonClick}
+                            >
+                                {showPhoneNumber ? product.phoneNumber : 'Показати телефон'}
+                            </button>
+                        </div>
                     </div>
 
 
@@ -177,10 +205,36 @@ export default function ProductDetails() {
                         </div>
 
                     </div>
+
+
+
+
                     <div className={style.containerElement}>
-                        <div><MapIcon /></div>
-                        <p className={style.productLocation}>Location: {product.location.settlement}</p>
+                        <div className={style.locationContainer}>
+                            <div className={style.textContainer}>
+                                <h1 className={style.locationHeader}>МІСЦЕЗНАХОДЖЕННЯ</h1>
+                                <p className={style.locationText}>
+                                    <LocationIcon />
+                                    {product.location.settlement}
+                                </p>
+                                <h1 className={style.locationRegion}>Київська область</h1>
+                            </div>
+                            <div className={style.mapIconContainer}>
+                                <button
+                                    className={style.mapButton}
+                                    onClick={() => {
+                                        const query = encodeURIComponent(product.location.settlement);
+                                        window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+                                    }}
+                                >
+                                    <MapIcon />
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
+
+
 
                     <div className={style.containerElement}>
                         <h1 className={style.headerDescription}>ПРО НАС</h1>
