@@ -223,8 +223,8 @@
 }
 
 .leftUserContainer {
-  display: flex; /* Дозволяє розміщення елементів в один рядок */
-  align-items: center; /* Вертикальне вирівнювання по центру */
+  display: flex;
+  align-items: center;
 }
 
 .rightUserContainer {
@@ -300,6 +300,7 @@
   font-size: 12px;
   margin-bottom: 10px;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 .showMoreDescription {
@@ -307,41 +308,64 @@
   font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .arrowDescription {
-  color: black;
-  stroke: black;
   transform: rotate(-90deg);
   display: inline-block;
   vertical-align: middle;
-  margin-left: 8px; /* Це додасть відступ зліва від тексту */
+  margin-left: 8px;
+}
+
+.rotateArrow {
+  transform: rotate(90deg);
+}
+
+.ratingComment{
+  margin-bottom: 10px;
+}
+
+.whatsRatingContainer {
+  display: flex;
+  align-items: center;
 }
 
 .whatsRating {
-
+  color: #00308E;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 .userInfo {
   display: flex;
-  align-items: center;
-  margin-left: 10px;
+  align-items: flex-start;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .userText {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .userName {
   font-weight: bold;
   color: black;
+  margin-bottom: auto;
 }
 
 .userStatus {
   color: #7889A5;
   font-size: 12px;
+  margin-top: 10px;
+}
+
+.arrowAllGoods {
+  transform: rotate(180deg);
+  margin-left: 3px;
   margin-top: 2px;
 }

@@ -17,6 +17,14 @@ export default function ProductDetails() {
     const [product, setProduct] = useState(null);
     const [itemImgIndex, setItemImgIndex] = useState(0);
     const [images, setImages] = useState([]);
+    const [showMore, setShowMore] = useState(false);
+    let myString = "— Великий асортимент шин з Німеччини.\n— Комплекти, пари, одиночні, на запаску.\n— Ціна від 800 грн/шт\n— Допоможемо підібрати та проконсультуємо вас у підборі шин.\n— Шини для будь-яких типів автомобілів.\n— Гарантія якості та довговічності.\n— Доступні різні розміри та моделі.\n— Швидка доставка по всій Україні.";
+
+
+    const handleToggle = () => {
+        setShowMore(prevState => !prevState);
+    };
+
 
     useEffect(() => {
         async function fetchProduct() {
@@ -162,11 +170,11 @@ export default function ProductDetails() {
                             </div>
                         </div>
 
-                        <h1>Цей автор отримав багато відмінних відгуків</h1>
+                        <h1 className={style.ratingComment}>Цей автор отримав багато відмінних відгуків</h1>
 
-
-
-                        <div><h1 className={style.whatsRating}>Що таке рейтинг?</h1> Усі оголошення автора </div>
+                        <div className={style.whatsRatingContainer}>
+                            <h1 className={style.whatsRating}>Що таке рейтинг?</h1>Усі оголошення автора <ArrowDescription className={style.arrowAllGoods} />
+                        </div>
 
                     </div>
                     <div className={style.containerElement}>
@@ -178,13 +186,11 @@ export default function ProductDetails() {
                         <h1 className={style.headerDescription}>ПРО НАС</h1>
 
                         <div className={style.bodyDescription}>
-                            <p>— Великий асортимент шин з Німеччини.</p>
-                            <p>— Комплекти, пари, одиночні, на запаску.</p>
-                            <p>— Ціна від 800 грн/шт</p>
-                            <p>— Допоможемо підібрати та проконсультуємо вас у підборі шин.</p>
+                            {showMore ? myString : myString.split('\n').slice(0, 4).join('\n')}
                         </div>
-                        <h1 className={style.showMoreDescription}>
-                            Показати повністю<ArrowDescription className={style.arrowDescription} />
+                        <h1 className={style.showMoreDescription} onClick={handleToggle}>
+                            {showMore ? 'Згорнути опис' : 'Показати повністю'}
+                            <ArrowDescription className={`${style.arrowDescription} ${showMore ? style.rotateArrow : ''}`} />
                         </h1>
                     </div>
                 </div>
