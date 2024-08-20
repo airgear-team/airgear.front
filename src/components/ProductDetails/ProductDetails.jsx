@@ -9,6 +9,7 @@ import MapIcon from "../../assets/images/icons/Map.svg?react";
 import UserStars from "../../assets/images/icons/UserStars.svg?react";
 import UserStatusIcon from "../../assets/images/icons/UserStatusIcon.svg?react";
 import Arrow from "../../assets/images/icons/Arrow.svg?react";
+import ArrowDescription from "../../assets/images/icons/ArrowDescription.svg?react";
 import UserDefaultAvatar from "../../assets/images/icons/UserDefaultAvatar.svg?react";
 
 export default function ProductDetails() {
@@ -124,10 +125,6 @@ export default function ProductDetails() {
 
                 </div>
 
-
-
-
-
                 <div className={style.rightContainer}>
                     <div className={style.containerElement}>
                         <button className={style.likeButton} type="button"><LikeIcon /></button>
@@ -157,8 +154,19 @@ export default function ProductDetails() {
                         </div>
 
 
-                        <div><UserDefaultAvatar /> Сергій Був не щодавно</div>
-                        <div>Що таке рейтинг? Усі оголошення автора </div>
+                        <div className={style.userInfo}>
+                            <UserDefaultAvatar />
+                            <div className={style.userText}>
+                                <div className={style.userName}>Сергій</div>
+                                <div className={style.userStatus}>Був нещодавно</div>
+                            </div>
+                        </div>
+
+                        <h1>Цей автор отримав багато відмінних відгуків</h1>
+
+
+
+                        <div><h1 className={style.whatsRating}>Що таке рейтинг?</h1> Усі оголошення автора </div>
 
                     </div>
                     <div className={style.containerElement}>
@@ -167,14 +175,17 @@ export default function ProductDetails() {
                     </div>
 
                     <div className={style.containerElement}>
-                        <h1>Про нас</h1>
-                        <p>— Великий асортимент шин з Німеччини.</p>
-                        <p>— Комплекти, пари, одиночні, на запаску.</p>
-                        <p>— Ціна від 800 грн/шт</p>
-                        <p>— Допоможемо підібрати та проконсультуємо вас у підборі шин.</p>
+                        <h1 className={style.headerDescription}>ПРО НАС</h1>
 
-                        <h1>Показати повністю</h1>
-
+                        <div className={style.bodyDescription}>
+                            <p>— Великий асортимент шин з Німеччини.</p>
+                            <p>— Комплекти, пари, одиночні, на запаску.</p>
+                            <p>— Ціна від 800 грн/шт</p>
+                            <p>— Допоможемо підібрати та проконсультуємо вас у підборі шин.</p>
+                        </div>
+                        <h1 className={style.showMoreDescription}>
+                            Показати повністю<ArrowDescription className={style.arrowDescription} />
+                        </h1>
                     </div>
                 </div>
             </div>

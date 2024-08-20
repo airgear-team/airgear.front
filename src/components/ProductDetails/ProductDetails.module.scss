@@ -285,3 +285,63 @@
   font-size: 12px;
   margin-top: 15px;
 }
+
+.headerDescription{
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.bodyDescription {
+  color: #7889A5;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.showMoreDescription {
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.arrowDescription {
+  color: black;
+  stroke: black;
+  transform: rotate(-90deg);
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px; /* Це додасть відступ зліва від тексту */
+}
+
+.whatsRating {
+
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.userText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.userName {
+  font-weight: bold;
+  color: black;
+}
+
+.userStatus {
+  color: #7889A5;
+  font-size: 12px;
+  margin-top: 2px;
+}
