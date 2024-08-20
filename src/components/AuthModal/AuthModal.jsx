@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import style from './AuthModal.module.scss';
+import AppleIcon from "../../assets/images/icons/auth/Apple.svg?react";
+import FacebookIcon from "../../assets/images/icons/auth/Facebook.svg?react";
+import GoogleIcon from "../../assets/images/icons/auth/Google.svg?react";
 
 export default function AuthModal({ onClose }) {
     const [isRegister, setIsRegister] = useState(false);
@@ -40,7 +43,42 @@ export default function AuthModal({ onClose }) {
         <div className={style.modal}>
             <div className={style.modalContent}>
                 <span className={style.close} onClick={onClose}>&times;</span>
-                <h2 className={style.headText}>{isRegister ? 'Зареєструватись' : 'Увійти'}</h2>
+                <div>
+                    <button className={style.oAuthButton} type="submit">
+                        <AppleIcon />
+                        Продовжити через Apple
+                    </button>
+                    <button className={style.oAuthButton} type="submit">
+                        <FacebookIcon />
+                        Продовжити через Facebook
+                    </button>
+                    <button className={style.oAuthButton} type="submit">
+                        <GoogleIcon />
+                        Продовжити через Google
+                    </button>
+                </div>
+                <div className={style.orContainer}>
+                    <span className={style.line}></span>
+                    <span className={style.orText}>або</span>
+                    <span className={style.line}></span>
+                </div>
+
+                <div className={style.switchButtons}>
+                    <button 
+                        type="button" 
+                        className={!isRegister ? style.activeButton : style.inactiveButton}
+                        onClick={() => setIsRegister(false)}
+                    >
+                        Увійти
+                    </button>
+                    <button 
+                        type="button" 
+                        className={isRegister ? style.activeButton : style.inactiveButton}
+                        onClick={() => setIsRegister(true)}
+                    >
+                        Зареєструватись
+                    </button>
+
                 <form onSubmit={handleSubmit}>
                     {isRegister && (
                         <>
@@ -51,10 +89,9 @@ export default function AuthModal({ onClose }) {
                     <input type="email" name="email" placeholder="Електронна пошта" value={formData.email} onChange={handleChange} required />
                     <input type="password" name="password" placeholder="Пароль" value={formData.password} onChange={handleChange} required />
                     <button type="submit">{isRegister ? 'Зареєструватись' : 'Увійти'}</button>
-                    <button type="button" onClick={() => setIsRegister(!isRegister)}>
-                        {isRegister ? 'Вже маєте аккаунт? Увійти' : 'Ще не маєте аккаунта? Зареєструватись'}
-                    </button>
                 </form>
+
+                </div>
             </div>
         </div>
     );

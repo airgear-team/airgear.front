@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #407BFF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,10 +16,9 @@
 .modalContent {
   background-color: white;
   padding: 20px;
-  border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 90%;
-  max-width: 400px;
+  max-width: 300px;
   text-align: center;
   position: relative;
 }
@@ -44,16 +43,14 @@ form {
   input {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
     font-family: 'Museosanscyrl', sans-serif;
   }
 
   button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #1919D3;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-family: 'Museosanscyrl', sans-serif;
 
@@ -61,4 +58,66 @@ form {
       background-color: #0056b3;
     }
   }
+}
+
+.oAuthButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  border: 2px solid #007bff;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.oAuthButton svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  margin-top: 0;
+}
+
+
+.orContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #CCE5F7;
+  margin: 0 10px;
+}
+
+.orText {
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.switchButtons button {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.activeButton {
+  color: #407BFF;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+.inactiveButton {
+  color: #000000;
 }
