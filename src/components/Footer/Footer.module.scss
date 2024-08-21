@@ -1,18 +1,17 @@
 .footer {
   background-color: #407BFF;
-  color: #fff;
   padding: 50px 17.5%;
-  text-align: left;
 }
 
 .footerContent {
   max-width: 1250px;
-  height: 273px;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
+
 }
 
 .footerNav {
-  height: 156px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +19,6 @@
 
 .footerInfo {
   color: #CCE5F7;
-  height: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +26,6 @@
 
 .footerInfo p{
   font-size: 12px;
-  margin: 10px 0;
 }
 
 .column {
@@ -37,11 +34,11 @@
   nav {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 
     a {
       color: #fff;
       font-size: 16px;
-      margin: 10px 0;
       text-decoration: none;
 
       &:hover {
