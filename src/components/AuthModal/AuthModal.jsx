@@ -3,6 +3,7 @@ import style from './AuthModal.module.scss';
 import AppleIcon from "../../assets/images/icons/auth/Apple.svg?react";
 import FacebookIcon from "../../assets/images/icons/auth/Facebook.svg?react";
 import GoogleIcon from "../../assets/images/icons/auth/Google.svg?react";
+import YeyIcon from "../../assets/images/icons/YeyIcon.svg?react";
 
 export default function AuthModal({ onClose }) {
     const [isRegister, setIsRegister] = useState(false);
@@ -12,6 +13,12 @@ export default function AuthModal({ onClose }) {
         name: '',
         phone: ''
     });
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -39,10 +46,16 @@ export default function AuthModal({ onClose }) {
             });
     };
 
+    // Handle click outside modal to close
+    const handleModalClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     return (
-        <div className={style.modal}>
-            <div className={style.modalContent}>
-                <span className={style.close} onClick={onClose}>&times;</span>
+        <div className={style.modal} onClick={handleModalClick}>
+            <div className={style.modalContent} onClick={(e) => e.stopPropagation()}>
                 <div>
                     <button className={style.oAuthButton} type="submit">
                         <AppleIcon />
@@ -64,33 +77,59 @@ export default function AuthModal({ onClose }) {
                 </div>
 
                 <div className={style.switchButtons}>
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         className={!isRegister ? style.activeButton : style.inactiveButton}
                         onClick={() => setIsRegister(false)}
                     >
                         Увійти
                     </button>
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         className={isRegister ? style.activeButton : style.inactiveButton}
                         onClick={() => setIsRegister(true)}
                     >
                         Зареєструватись
                     </button>
 
-                <form onSubmit={handleSubmit}>
-                    {isRegister && (
-                        <>
-                            <input type="text" name="name" placeholder="Ім'я" value={formData.name} onChange={handleChange} required />
-                            <input type="text" name="phone" placeholder="Номер телефону" value={formData.phone} onChange={handleChange} required />
-                        </>
-                    )}
-                    <input type="email" name="email" placeholder="Електронна пошта" value={formData.email} onChange={handleChange} required />
-                    <input type="password" name="password" placeholder="Пароль" value={formData.password} onChange={handleChange} required />
-                    <button type="submit">{isRegister ? 'Зареєструватись' : 'Увійти'}</button>
-                </form>
+                    <form onSubmit={handleSubmit}>
+                        {isRegister && (
+                            <>
+                                <input type="text" name="name" placeholder="Ім'я" value={formData.name} onChange={handleChange} required />
+                                <input type="text" name="phone" placeholder="Номер телефону" value={formData.phone} onChange={handleChange} required />
+                            </>
+                        )}
+                        <input type="email" name="email" placeholder="Електронна пошта" value={formData.email} onChange={handleChange} required />
 
+                        <div className={style.passwordContainer}>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="Пароль"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                                className={style.passwordInput}
+                            />
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                                className={style.passwordToggle}
+                            >
+                                <YeyIcon />
+                            </button>
+                        </div>
+
+                        <h1 className={style.forgotPassword}>Забули пароль?</h1>
+                        <div className={style.singIn}>
+                            <button type="submit">{isRegister ? 'Зареєструватись' : 'Увійти'}</button>
+                        </div>
+
+                        <h1 className={style.termsAgreement}>
+                            Під час входу ви погоджуєтеся з нашими
+                            <span className={style.termsAgreementLink}> Умовами користування</span>
+                        </h1>
+                    </form>
                 </div>
             </div>
         </div>

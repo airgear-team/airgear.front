@@ -10,7 +10,6 @@
   align-items: center;
   z-index: 1000;
   font-family: 'Museosanscyrl', sans-serif;
-
 }
 
 .modalContent {
@@ -31,7 +30,7 @@
   cursor: pointer;
 }
 
-.headText{
+.headText {
   margin-bottom: 20px;
 }
 
@@ -44,19 +43,6 @@ form {
     padding: 10px;
     border: 1px solid #ccc;
     font-family: 'Museosanscyrl', sans-serif;
-  }
-
-  button {
-    padding: 10px;
-    background-color: #1919D3;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-family: 'Museosanscyrl', sans-serif;
-
-    &:hover {
-      background-color: #0056b3;
-    }
   }
 }
 
@@ -81,7 +67,6 @@ form {
   margin-right: 10px;
   margin-top: 0;
 }
-
 
 .orContainer {
   display: flex;
@@ -117,7 +102,79 @@ form {
   text-decoration: underline;
 }
 
-
 .inactiveButton {
   color: #000000;
+}
+
+.passwordContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordInput {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: -5px;
+  top: 40%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.passwordToggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.forgotPassword {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.singIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #1919D3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Museosanscyrl', sans-serif;
+  height: 40px;
+  margin-top: 30px;
+}
+
+.singIn button {
+  all: unset;
+  color: white;
+  font-family: 'Museosanscyrl', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.singIn button:hover {
+  background-color: #0056b3;
+}
+
+.termsAgreement {
+  color: #000000;
+  font-size: 10px;
+}
+
+.termsAgreementLink {
+  color: #1919D3;
+  cursor: pointer;
 }
