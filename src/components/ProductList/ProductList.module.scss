@@ -3,7 +3,6 @@
 .container {
   background: #F2F7FF;
   min-height: 100vh;
-  margin-bottom: 250px;
 }
 
 .product_list {
@@ -11,6 +10,7 @@
   margin: 0 auto;
   padding: 0 10px;
   padding-bottom: 40px;
+  margin-bottom: 50px;
 
   @media (min-width: $x_mobile) {
     display: flex;
