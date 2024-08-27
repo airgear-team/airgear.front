@@ -1,0 +1,40 @@
+.container {
+  background: #F2F7FF;
+  min-height: 100vh;
+}
+.searchResult{
+  padding: 0px 17.5%;
+}
+
+.resultsHeader {
+  width: 100%;
+  padding: 16px 0;
+  border-bottom: 1px solid #ececec;
+  margin-bottom: 16px;
+  text-align: left;
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
+
+.resultsList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.resultsList:last-child {
+  padding-bottom: 50px;
+}
+
+.product_card {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}

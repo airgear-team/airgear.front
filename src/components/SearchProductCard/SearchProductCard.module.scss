@@ -1,0 +1,96 @@
+.container {
+  width: 100%;
+  padding: 20px;
+}
+
+.searchResult {
+  margin-top: 10px;
+}
+
+.resultsHeader {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.resultsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.productCard {
+  display: flex;
+  padding: 15px;
+  background-color: #fff;
+  position: relative;
+
+}
+
+.imageContainer img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.productInfo {
+  flex-grow: 1;
+  padding-left: 15px;
+}
+
+.productHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productName {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.productCondition {
+  border: 1px solid #f3f3f3;
+  background-color: #f3f3f3;
+  padding: 2px 6px;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.productLocation {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.productFooter {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.productPrice {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.topBadge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: #00a800;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+
