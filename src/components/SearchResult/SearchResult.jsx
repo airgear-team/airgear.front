@@ -34,7 +34,7 @@ export default function SearchResult() {
                 </div>
                 <div className={style.resultsList}>
                     {searchProductCard.map(product => (
-                        <SearchProductCard key={searchProductCard.id} product={product} />
+                        <SearchProductCard key={product.id} product={product} />
                     ))}
                 </div>
             </div>
