@@ -6,16 +6,20 @@
   font-family: 'Museosanscyrl', sans-serif;
 }
 
+.searchWrapper {
+  position: relative;
+  width: 65%;
+  margin: 30px;
+}
+
 .search {
   background: white;
   padding-left: 5px;
-  margin: 30px;
-  width: 65%;
+  width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
 }
-
 
 .mainInput {
   width: 70%;
@@ -57,4 +61,32 @@
 
 .searchButton:hover {
   background-color: #e0ebfc;
+}
+
+.locationList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  right: 80px;
+  width: calc(19% - 2px);
+  z-index: 1000;
+}
+
+.locationItem {
+  padding: 10px;
+  border-bottom: 1px solid #efefef;
+  cursor: pointer;
+}
+
+.locationItem:hover {
+  background-color: #f0f0f0;
+}
+
+.locationItem:last-child {
+  border-bottom: none;
 }
