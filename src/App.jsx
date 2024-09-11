@@ -5,6 +5,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import CreateRent from "./components/CreateRent/CreateRent";
 import './index.scss';
 import SearchResult from "./components/SearchResult/SearchResult.jsx";
+import { PopularQueries } from './components/PopularQueries/PopularQueries.jsx';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 				<Route path="/create-rent" element={<CreateRent />} />
 				<Route path="/product/:id" element={<ProductDetails />} />
 				<Route path="/search" element={<SearchResult />} />
+				<Route path="/popular-queries" element={<PopularQueries />} />
 			</Routes>
 		</Router>
 	);

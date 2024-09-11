@@ -3,7 +3,7 @@ import Header from "../Header/Header.jsx";
 import SearchForm from "../SearchForm/SearchForm.jsx";
 import Footer from "../Footer/Footer.jsx";
 import SearchProductCard from "../SearchProductCard/SearchProductCard.jsx";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 
 export default function SearchResult() {
