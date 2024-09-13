@@ -6,6 +6,7 @@ import CreateRent from "./components/CreateRent/CreateRent";
 import './index.scss';
 import SearchResult from "./components/SearchResult/SearchResult.jsx";
 import { PopularQueries } from './components/PopularQueries/PopularQueries.jsx';
+import { Admin } from './pages/Admin.jsx';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/product/:id" element={<ProductDetails />} />
 				<Route path="/search" element={<SearchResult />} />
 				<Route path="/popular-queries" element={<PopularQueries />} />
+				<Route path="/admin" element={<Admin />} />
 			</Routes>
 		</Router>
 	);

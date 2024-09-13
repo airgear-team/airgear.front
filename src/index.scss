@@ -3,6 +3,11 @@
 @import "assets/scss/typography";
 @import "assets/scss/fonts";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
+  // margin: 0;
   font-family: 'Museosanscyrl', sans-serif;
 }

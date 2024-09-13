@@ -1,0 +1,18 @@
+.header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.link {
+    width: calc(100% / 3);
+    padding: 10px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.activeLink {
+    border-bottom: 2px solid #407BFF;
+}

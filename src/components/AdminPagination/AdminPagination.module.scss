@@ -1,0 +1,21 @@
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pageNumber {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pageLink {
+    // background-color: #0000ff;
+    border: 1px solid #ccc;
+}
+
+.pageNumber:hover {
+    // background-color: #0055ff;
+    color: #0055ff;
+}

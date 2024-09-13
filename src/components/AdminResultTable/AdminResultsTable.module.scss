@@ -1,0 +1,26 @@
+.wrapper {
+    width: calc(100% / 3) * 2;
+    background-color: #ffffff;
+    padding: 20px 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
