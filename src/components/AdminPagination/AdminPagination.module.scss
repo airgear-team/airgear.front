@@ -10,12 +10,11 @@
     cursor: pointer;
 }
 
-.pageLink {
-    // background-color: #0000ff;
-    border: 1px solid #ccc;
+.pageNumber:disabled {
+    border: 1px solid #0055ff;
+    cursor: default;
 }
 
 .pageNumber:hover {
-    // background-color: #0055ff;
-    color: #0055ff;
+    border: 1px solid #0055ff;
 }

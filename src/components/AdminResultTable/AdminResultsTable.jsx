@@ -4,34 +4,22 @@ import style from "./AdminResultsTable.module.scss"
 import { usersArray } from "../../constants";
 
 export const AdminResultsTable = () => {
-    // const [users, setUsers] = useState([])
-
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [usersPerPage] = useState(6);
-
-    // // Get current users
-    // const indexOfLastUser = currentPage * usersPerPage;
-    // const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    // const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-
-    // // Change page
-    // const paginate = pageNumber => setCurrentPage(pageNumber);
-
-    // useEffect(() => {
-    //     setUsers(usersArray)
-    // }, [])
-
+    const [users, setUsers] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(3);
 
-    // Get current users
+    // // Get current users
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = usersArray.slice(indexOfFirstUser, indexOfLastUser);
+    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    useEffect(() => {
+        setUsers(usersArray)
+    }, [])
 
     return (
         <div className={style.wrapper}>
@@ -67,6 +55,7 @@ export const AdminResultsTable = () => {
                 usersPerPage={usersPerPage}
                 totalUsers={usersArray.length}
                 paginate={paginate}
+                currentPage={currentPage}
             />
         </div>
     )
