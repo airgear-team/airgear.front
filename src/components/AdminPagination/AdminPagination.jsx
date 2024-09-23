@@ -8,8 +8,6 @@ export const Pagination = ({ usersPerPage, totalUsers, paginate, currentPage }) 
         pageNumbers.push(i);
     }
 
-    console.log("Current page: " + currentPage);
-
     return (
         <nav>
             <ul className={style.pagination}>
@@ -17,7 +15,6 @@ export const Pagination = ({ usersPerPage, totalUsers, paginate, currentPage }) 
                     <li
                         onClick={() => paginate(number)}
                         key={number}
-                        // className={style.pageNumber}
                         className={number === currentPage ? style.activePage : style.pageNumber}
                     >
                         {number}
