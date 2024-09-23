@@ -214,3 +214,5 @@ export const usersArray = [
     { id: 11, name: "Zakhar", email: "zakhar.onys@gmail.com", phone: "+380987817755", roles: "+380987817755", goods: 1, activity: "today", status: "scam" },
     { id: 12, name: "Kyrylo", email: "kyrylo.trots@gmail.com", phone: "+380954117755", roles: "+380954117755", goods: 1, activity: "yesterday", status: "scam" }
 ]
+
+export const USERS_PER_PAGE = 5;

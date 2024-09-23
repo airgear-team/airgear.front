@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { Pagination } from "../AdminPagination/AdminPagination"
 import style from "./styles.module.scss"
-import { usersArray } from "../../constants";
+import { USERS_PER_PAGE, usersArray } from "../../constants";
 
 export const AdminResultsTable = () => {
     const [users, setUsers] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage] = useState(3);
 
     // // Get current users
-    const indexOfLastUser = currentPage * usersPerPage;
-    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const indexOfLastUser = currentPage * USERS_PER_PAGE;
+    const indexOfFirstUser = indexOfLastUser - USERS_PER_PAGE;
     const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
     // Change page
@@ -52,7 +51,7 @@ export const AdminResultsTable = () => {
                 </tbody>
             </table>
             <Pagination
-                usersPerPage={usersPerPage}
+                usersPerPage={USERS_PER_PAGE}
                 totalUsers={usersArray.length}
                 paginate={paginate}
                 currentPage={currentPage}
