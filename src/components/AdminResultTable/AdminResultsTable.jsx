@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Pagination } from "../AdminPagination/AdminPagination"
 import style from "./styles.module.scss"
-import { USERS_PER_PAGE, usersArray } from "../../constants";
+import { USERS_PER_PAGE, BASE_URL, API_TOKEN, START_OF_QUERY, COUNT_OF_RECORDS } from "../../constants";
 
 export const AdminResultsTable = () => {
     const [users, setUsers] = useState([])
@@ -17,7 +17,20 @@ export const AdminResultsTable = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     useEffect(() => {
-        setUsers(usersArray)
+        fetch(`${BASE_URL}users?page=${START_OF_QUERY}&size=${COUNT_OF_RECORDS}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': API_TOKEN
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setUsers(data.content);
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+
     }, [])
 
     return (
@@ -44,7 +57,7 @@ export const AdminResultsTable = () => {
                             <td>{user.phone}</td>
                             <td>{user.roles}</td>
                             <td>{user.goods}</td>
-                            <td>{user.activity}</td>
+                            <td>{user.lastActivity}</td>
                             <td>{user.status}</td>
                         </tr>
                     ))}
@@ -52,7 +65,7 @@ export const AdminResultsTable = () => {
             </table>
             <Pagination
                 usersPerPage={USERS_PER_PAGE}
-                totalUsers={usersArray.length}
+                totalUsers={users.length}
                 paginate={paginate}
                 currentPage={currentPage}
             />

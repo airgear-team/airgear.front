@@ -216,3 +216,7 @@ export const usersArray = [
 ]
 
 export const USERS_PER_PAGE = 5;
+export const START_OF_QUERY = 0;
+export const COUNT_OF_RECORDS = 20;
+export const BASE_URL = 'http://localhost:8082/admin/';
+export const API_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlcyI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MjcwOTY4NTIsImV4cCI6MTcyNzExNDg1Mn0.YY1taS3O5r4z4fUGgZpqtOKIMxplomoPOFHJ3o-u-r0';
