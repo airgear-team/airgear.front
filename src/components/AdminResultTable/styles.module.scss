@@ -1,0 +1,46 @@
+.wrapper {
+    width: calc(100% / 3) * 2;
+    background-color: #ffffff;
+    padding: 20px 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 10px;
+    max-width: 80px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 991px) {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 786px) {
+
+    th,
+    td {
+        padding: 5px;
+        max-width: 40px;
+    }
+}

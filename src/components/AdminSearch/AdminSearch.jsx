@@ -1,4 +1,4 @@
-import style from "./AdminSearch.module.scss"
+import style from "./styles.module.scss"
 
 export const AdminSearch = () => {
     return (
@@ -25,17 +25,15 @@ export const AdminSearch = () => {
                         <option value="not_verified">Not Verified</option>
                     </select>
                 </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="createdAt">Created At</label>
-                    <select id="createdAt" name="createdAt" className={style.input}>
-                        <option value="">Select</option>
-                    </select>
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="deletedAt">Delete At</label>
-                    <select id="deletedAt" name="deletedAt" className={style.input}>
-                        <option value="">Select</option>
-                    </select>
+                <div className={style.dateWrapper}>
+                    <div className={style.formGroup}>
+                        <label htmlFor="createdAt">Created At</label>
+                        <input type="date" id="createdAt" name="createdAt" className={style.input} />
+                    </div>
+                    <div className={style.formGroup}>
+                        <label htmlFor="deletedAt">Delete At</label>
+                        <input type="date" id="deletedAt" name="deletedAt" className={style.input} />
+                    </div>
                 </div>
                 <button type="submit" className={style.btn}>Search</button>
             </form>

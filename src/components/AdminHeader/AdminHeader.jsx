@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import style from "./AdminHeader.module.scss"
+import style from "./styles.module.scss"
 
 export const AdminHeader = () => {
     return (

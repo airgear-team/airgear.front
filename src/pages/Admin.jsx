@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { AdminHeader } from "../components/AdminHeader/AdminHeader"
 import { AdminResultsTable } from "../components/AdminResultTable/AdminResultsTable"
 import { AdminSearch } from "../components/AdminSearch/AdminSearch"
-import style from "./Admin.module.scss"
+import style from "./styles.module.scss"
 
 export const Admin = () => {
     return (

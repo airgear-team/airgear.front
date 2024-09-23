@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Pagination } from "../AdminPagination/AdminPagination"
-import style from "./AdminResultsTable.module.scss"
+import style from "./styles.module.scss"
 import { usersArray } from "../../constants";
 
 export const AdminResultsTable = () => {

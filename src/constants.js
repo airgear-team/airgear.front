@@ -201,16 +201,16 @@ export const queriesArray = [
 ];
 
 export const usersArray = [
-    { id: 1, name: "Oleksandr", email: "oleksandr.b...", phone: "+3809835...", roles: "+3809835...", goods: 2, activity: "yesterday", status: "verify" },
-    { id: 2, name: "Alexiy", email: "alexiy.bory...", phone: "+3809556...", roles: "+3809556...", goods: 1, activity: "today", status: "scam" },
-    { id: 3, name: "Anastasia", email: "anastasia.vi...", phone: "+3806756...", roles: "+3806756...", goods: 2, activity: "yesterday", status: "not verified" },
-    { id: 4, name: "Anatoly", email: "anatoly.zgh...", phone: "+3806636...", roles: "+3806636...", goods: 2, activity: "today", status: "verify" },
-    { id: 5, name: "Andriy", email: "andriy.kazy...", phone: "+3809525...", roles: "+3809525...", goods: 5, activity: "yesterday", status: "not verified" },
-    { id: 6, name: "Ganna", email: "ganna.mykh...", phone: "+3809763...", roles: "+3809763...", goods: 5, activity: "today", status: "verify" },
-    { id: 7, name: "Antonina", email: "antoninal.va...", phone: "+3809565...", roles: "+3809565...", goods: 5, activity: "today", status: "not verified" },
-    { id: 8, name: "Gennady", email: "gennady.rt...", phone: "+3809888...", roles: "+3809888...", goods: 5, activity: "yesterday", status: "not verified" },
-    { id: 9, name: "Denys", email: "denys.koval...", phone: "+3809686...", roles: "+3809686...", goods: 4, activity: "yesterday", status: "verify" },
-    { id: 10, name: "Kateryna", email: "kateryna.m...", phone: "+3809555...", roles: "+3809555...", goods: 2, activity: "today", status: "verify" },
-    { id: 11, name: "Zakhar", email: "zakhar.onys...", phone: "+3809878...", roles: "+3809878...", goods: 1, activity: "today", status: "scam" },
-    { id: 12, name: "Kyrylo", email: "kyrylo.trots...", phone: "+3809541...", roles: "+3809541...", goods: 1, activity: "yesterday", status: "scam" }
+    { id: 1, name: "Oleksandr", email: "oleksandr.b@gmail.com", phone: "+380983517755", roles: "+380983517755", goods: 2, activity: "yesterday", status: "verify" },
+    { id: 2, name: "Alexiy", email: "alexiy.bory@gmail.com", phone: "+380955617755", roles: "+380955617755", goods: 1, activity: "today", status: "scam" },
+    { id: 3, name: "Anastasia", email: "anastasia.vi@gmail.com", phone: "+380675617755", roles: "+380675617755", goods: 2, activity: "yesterday", status: "not verified" },
+    { id: 4, name: "Anatoly", email: "anatoly.zgh@gmail.com", phone: "+380663617755", roles: "+380663617755", goods: 2, activity: "today", status: "verify" },
+    { id: 5, name: "Andriy", email: "andriy.kazy@gmail.com", phone: "+380952517755", roles: "+380952517755", goods: 5, activity: "yesterday", status: "not verified" },
+    { id: 6, name: "Ganna", email: "ganna.mykh@gmail.com", phone: "+380976317755", roles: "+380976317755", goods: 5, activity: "today", status: "verify" },
+    { id: 7, name: "Antonina", email: "antoninal.va@gmail.com", phone: "+380956517755", roles: "+380956517755", goods: 5, activity: "today", status: "not verified" },
+    { id: 8, name: "Gennady", email: "gennady.rt@gmail.com", phone: "+380988817755", roles: "+380988817755", goods: 5, activity: "yesterday", status: "not verified" },
+    { id: 9, name: "Denys", email: "denys.koval@gmail.com", phone: "+380968617755", roles: "+380968617755", goods: 4, activity: "yesterday", status: "verify" },
+    { id: 10, name: "Kateryna", email: "kateryna.m@gmail.com", phone: "+380955517755", roles: "+380955517755", goods: 2, activity: "today", status: "verify" },
+    { id: 11, name: "Zakhar", email: "zakhar.onys@gmail.com", phone: "+380987817755", roles: "+380987817755", goods: 1, activity: "today", status: "scam" },
+    { id: 12, name: "Kyrylo", email: "kyrylo.trots@gmail.com", phone: "+380954117755", roles: "+380954117755", goods: 1, activity: "yesterday", status: "scam" }
 ]

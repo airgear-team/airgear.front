@@ -2,11 +2,17 @@
     width: calc((100% / 3) - 10px);
     padding: 30px 48px;
     background-color: #ffffff;
-    height: 100vh;
+    height: 100%;
 }
 
 .formGroup {
     margin-bottom: 15px;
+}
+
+.dateWrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 label {
@@ -39,4 +45,16 @@ label {
 
 .btn:hover {
     background-color: #407BFF;
+}
+
+@media (max-width: 991px) {
+    .search {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .dateWrapper {
+        flex-direction: column;
+    }
 }
