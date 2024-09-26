@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import MagnifyingIcon from "../../assets/images/icons/Magnifying-glass.svg?react";
 import LocationIcon from "../../assets/images/icons/Location-point.svg?react";
 import styles from './SearchForm.module.scss';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const SearchForm = () => {
     const [name, setName] = useState("");
@@ -21,7 +21,7 @@ const SearchForm = () => {
         })
             .then(response => response.json())
             .then(data => {
-                navigate('/search-results', { state: { productCard: data } });
+                navigate('/search-results', {state: {productCard: data}});
             })
             .catch(error => {
                 console.error('Error fetching posts:', error);
@@ -62,7 +62,7 @@ const SearchForm = () => {
         <div className={styles.container}>
             <div className={styles.searchWrapper}>
                 <div className={styles.search}>
-                    <MagnifyingIcon className={styles.icon} />
+                    <MagnifyingIcon className={styles.icon}/>
                     <input
                         type="text"
                         value={name}
@@ -70,7 +70,7 @@ const SearchForm = () => {
                         placeholder="What are you looking for?"
                         className={styles.mainInput}
                     />
-                    <LocationIcon className={styles.icon} />
+                    <LocationIcon className={styles.icon}/>
                     <input
                         type="text"
                         value={location}
