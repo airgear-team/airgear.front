@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import style from './ToggleSwitch.module.scss';
 
-
-const ToggleSwitch = ({ label, onToggle }) => {
-    const [isChecked, setIsChecked] = useState(false);
-
+const ToggleSwitch = ({ isChecked, label, onToggle }) => {
     const handleToggle = () => {
-        setIsChecked(!isChecked);
         if (onToggle) {
-            onToggle(!isChecked);
+            onToggle(!isChecked); // Передаємо новий стан
         }
     };
 

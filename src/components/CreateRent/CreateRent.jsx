@@ -248,15 +248,16 @@ export default function CreateRent() {
                             <div className={style.goodsConditionCheckbox}>
                                 <label>
                                     <h1 className={style.smallTitle}>Товар новий?</h1>
-                                    <br/><ToggleSwitch
-                                    isChecked={formData.goodsCondition === "NEW"}
-                                    onToggle={(isChecked) => handleChange({
-                                        target: {
-                                            name: "goodsCondition",
-                                            value: isChecked.target.checked ? "NEW" : "USED"
-                                        }
-                                    })}
-                                />
+                                    <br/>
+                                    <ToggleSwitch
+                                        isChecked={formData.goodsCondition === "NEW"}
+                                        onToggle={(isChecked) => handleChange({
+                                            target: {
+                                                name: "goodsCondition",
+                                                value: isChecked ? "NEW" : "USED"
+                                            }
+                                        })}
+                                    />
                                 </label>
                             </div>
                         </div>
