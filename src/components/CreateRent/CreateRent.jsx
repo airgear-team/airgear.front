@@ -29,8 +29,10 @@ export default function CreateRent() {
         category: {
             id: ''
         },
-        phoneNumber: '',
-        goodsCondition: 'NEW'
+        phoneNumber: '+380',
+        goodsCondition: 'NEW',
+        sellerName: '',
+        sellerEmail: ''
     });
 
     const [selectedImages, setSelectedImages] = useState([]);
@@ -160,6 +162,36 @@ export default function CreateRent() {
                 console.error('Images upload error:', error);
             });
     };
+    const handleEmailChange = (event) => {
+        setFormData({
+            ...formData,
+            sellerEmail: event.target.value
+        });
+    };
+    const isEmailValid = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        return emailRegex.test(email);
+    };
+
+    const handlePhoneChange = (event) => {
+        const input = event.target.value;
+        if (input.startsWith('+380')) {
+            setFormData({
+                ...formData,
+                phoneNumber: input
+            });
+        } else {
+            setFormData({
+                ...formData,
+                phoneNumber: '+380' + input.slice(3)
+            });
+        }
+    };
+
+    const isPhoneValid = (phoneNumber) => {
+        const phoneRegex = /^\+380\d{9}$/;
+        return phoneRegex.test(phoneNumber);
+    };
 
 
     return (
@@ -199,7 +231,7 @@ export default function CreateRent() {
                                     value={formData.category.id}
                                     onChange={handleChange}
                                     required
-                                    className={`${style.flexItem} ${formData.category.id ? style.blackText : ''}`}
+                                    className={`${style.flexItem} ${formData.category.id ? style.blackText : style.error}`}
                                 >
                                     <option value="">Виберіть категорію</option>
                                     {categoryOptions.map(option => (
@@ -208,6 +240,24 @@ export default function CreateRent() {
                                         </option>
                                     ))}
                                 </select>
+                                {!formData.category.id && (
+                                    <p className={style.errorText}>Будь ласка, виберіть категорію</p>
+                                )}
+                            </div>
+
+                            <div className={style.goodsConditionCheckbox}>
+                                <label>
+                                    <h1 className={style.smallTitle}>Товар новий?</h1>
+                                    <br/><ToggleSwitch
+                                    isChecked={formData.goodsCondition === "NEW"}
+                                    onToggle={(isChecked) => handleChange({
+                                        target: {
+                                            name: "goodsCondition",
+                                            value: isChecked.target.checked ? "NEW" : "USED"
+                                        }
+                                    })}
+                                />
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -269,8 +319,14 @@ export default function CreateRent() {
                                 value={location}
                                 onChange={findLocation}
                                 placeholder="Ukraine"
-                                className={`${style.flexItem} ${style.locationInput}`}
+                                className={`${style.flexItem} ${location ? '' : style.error}`}
+
+                                required
                             />
+                            {!location && (
+                                <p className={style.errorText}>Невірне місцезнаходження</p>
+                            )}
+
                             {locations.length > 0 && (
                                 <ul className={style.locationList}>
                                     {locations.map((loc) => (
@@ -284,9 +340,8 @@ export default function CreateRent() {
                                     ))}
                                 </ul>
                             )}
-
                         </div>
-                        <div className={`${style.flexItemR} ${style.createRentBackgroundWhite}`}>
+                    <div className={`${style.flexItemR} ${style.createRentBackgroundWhite}`}>
                             <h1 className={style.boldTitle}>Автопродовження</h1>
                             <div className={style.toggleContainer}>
                                 <p className={style.smallTitle}>Оголошення буде деактивовано через 30 днів</p>
@@ -429,49 +484,69 @@ export default function CreateRent() {
                                         })}
                                     />
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={style.createRentBackgroundWhite}>
+                        <h1 className={style.boldTitle}>Ваші контактні дані</h1>
+                        <div className={style.flexRow}>
+                            <div className={style.flexItem}>
+                                <h1 className={style.smallTitle}>Ім'я</h1>
+                                <input
+                                    type="text"
+                                    name="sellerName"
+                                    placeholder="Ім'я"
+                                    value={formData.sellerName}
+                                    onChange={handleChange}
+                                    required
+                                    className={`${style.flexItem} ${formData.sellerName.length > 0 ? style.blackText : ''} ${formData.sellerName.length < 3 && style.error}`}
+                                />
+                                {formData.sellerName.length < 3 && (
+                                    <>
+                                        <p className={style.errorText}>Будь ласка, вкажіть ім’я контактної особи</p>
+                                    </>
+                                )}
 
 
+                            </div>
+                            <div className={style.flexItem}>
+                                <h1 className={style.smallTitle}>Електронна пошта</h1>
+                                <input
+                                    type="text"
+                                    name="sellerEmail"
+                                    placeholder="Електронна пошта"
+                                    value={formData.sellerEmail}
+                                    onChange={handleEmailChange}
+                                    required
+                                    className={`${style.flexItem} ${isEmailValid(formData.sellerEmail) ? '' : style.error} ${isEmailValid(formData.sellerEmail) ? style.blackText : ''}`}
+                                />
+                                {!isEmailValid(formData.sellerEmail) && (
+                                    <p className={style.errorText}>Будь ласка, введіть коректну електронну адресу</p>
+                                )}
+                            </div>
+                            <div className={style.flexItem}>
+                                <h1 className={style.smallTitle}>Номер телефону</h1>
+                                <input
+                                    type="text"
+                                    name="phoneNumber"
+                                    placeholder="XXXXXXXXXX"
+                                    value={formData.phoneNumber}
+                                    onChange={handlePhoneChange}
+                                    required
+                                    className={`${style.flexItem} ${isPhoneValid(formData.phoneNumber) ? '' : style.error} ${isPhoneValid(formData.phoneNumber) ? style.blackText : ''}`}
+                                />
+                                {!isPhoneValid(formData.phoneNumber) && (
+                                    <p className={style.errorText}>Будь ласка, введіть коректний номер телефону</p>
+                                )}
                             </div>
                         </div>
                     </div>
 
-                    <h1 className={style.boldTitle}>Ваші контактні дані</h1>
-
-                    <div className={style.otherInformation}>
-                            <div className={style.phoneNumber}>
-                                <input
-                                    type="text"
-                                    name="phoneNumber"
-                                    placeholder="Phone Number"
-                                    value={formData.phoneNumber}
-                                    onChange={handleChange}
-                                    required
-                                    className={style.phoneNumberInput}
-                                />
-                            </div>
-
-                            <div className={style.goodsConditionCheckbox}>
-                                <label>
-                                    Is new ?
-                                    <input
-                                        type="checkbox"
-                                        name="goodsCondition"
-                                        checked={formData.goodsCondition === "NEW"}
-                                        onChange={(e) => handleChange({
-                                            target: {
-                                                name: "goodsCondition",
-                                                value: e.target.checked ? "NEW" : "USED"
-                                            }
-                                        })}
-                                    />
-                                </label>
-                            </div>
-                        </div>
-
-                        <button type="submit">Create</button>
+                    <button type="submit">Create</button>
                 </form>
             </div>
             <Footer/>
         </div>
-);
+    )
+        ;
 }
