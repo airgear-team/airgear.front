@@ -31,10 +31,9 @@
 
     button {
       padding: 10px;
-      background-color: #407bff;
+      background-color: #1919D3;
       color: white;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
       margin-top: 10px;
 
@@ -375,4 +374,18 @@
   align-items: center;
   gap: 10px;
 }
+.textCenter{
+  text-align: center;
+}
+.underlineButton {
+  background: none!important;
+  border: none;
+  color: #00308E!important;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
 
+.underlineButton:hover {
+  color: #407bff!important;
+}

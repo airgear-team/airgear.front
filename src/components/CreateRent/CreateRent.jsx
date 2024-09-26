@@ -342,7 +342,7 @@ export default function CreateRent() {
                                 </ul>
                             )}
                         </div>
-                    <div className={`${style.flexItemR} ${style.createRentBackgroundWhite}`}>
+                        <div className={`${style.flexItemR} ${style.createRentBackgroundWhite}`}>
                             <h1 className={style.boldTitle}>Автопродовження</h1>
                             <div className={style.toggleContainer}>
                                 <p className={style.smallTitle}>Оголошення буде деактивовано через 30 днів</p>
@@ -353,7 +353,6 @@ export default function CreateRent() {
                     <div className={style.createRentBackgroundWhite}>
                         <h1 className={style.boldTitle}>Ціна</h1>
                         <div className={style.currencyContainer}>
-
                             <div className={style.currency}>
                                 <input
                                     type="number"
@@ -367,17 +366,12 @@ export default function CreateRent() {
                                         }
                                     }}
                                     required
-                                    className={style.currencyInputNumber}
+                                    className={`${style.currencyInputNumber} ${formData.price.priceAmount > 0 ? style.blackText : style.error}`}
                                 />
                                 <select
                                     name="price.priceCurrency"
                                     value={formData.price.priceCurrency}
                                     onChange={handleChange}
-                                    onKeyPress={(event) => {
-                                        if (!/[0-9]/.test(event.key)) {
-                                            event.preventDefault();
-                                        }
-                                    }}
                                     required
                                     className={style.currencyDropDownMenu}
                                 >
@@ -415,9 +409,9 @@ export default function CreateRent() {
                                         }
                                     }}
                                     required
-                                    className={style.currencyInputNumber}
-
+                                    className={`${style.currencyInputNumber} ${formData.weekendsPrice.weekendsPriceAmount > 0 ? style.blackText : style.error}`}
                                 />
+
                                 <select
                                     name="weekendsPrice.weekendsPriceCurrency"
                                     value={formData.weekendsPrice.weekendsPriceCurrency}
@@ -458,7 +452,7 @@ export default function CreateRent() {
                                         }
                                     }}
                                     required
-                                    className={style.currencyInputNumber}
+                                    className={`${style.currencyInputNumber} ${formData.deposit.depositAmount > 0 ? style.blackText : style.error}`}
                                 />
                                 <select
                                     name="deposit.depositCurrency"
@@ -471,6 +465,7 @@ export default function CreateRent() {
                                     <option value="EUR">EUR</option>
                                     <option value="UAH">UAH</option>
                                 </select>
+
                                 <div className={style.currencyCheckbox}>
                                     <label>
                                         Договірна:
@@ -542,12 +537,20 @@ export default function CreateRent() {
                             </div>
                         </div>
                     </div>
+                    <div className={style.createRentBackgroundWhite}>
+                        <div className={style.textCenter}>
+                            <button className={style.underlineButton}>
+                                Попередній перегляд
+                            </button>
 
-                    <button type="submit">Create</button>
+                            <button type="submit">Опублікувати</button>
+                        </div>
+                    </div>
                 </form>
+
             </div>
             <Footer/>
         </div>
-    )
-        ;
+)
+;
 }
