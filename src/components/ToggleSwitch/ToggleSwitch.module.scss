@@ -36,10 +36,9 @@
 }
 
 .toggleSwitch input:checked + .slider {
-  background-color: #407BFF;
+  background-color: #CCE5F7;
 }
 
 .toggleSwitch input:checked + .slider:before {
   transform: translateX(30px);
-  background-color: #F2F7FF;
 }
